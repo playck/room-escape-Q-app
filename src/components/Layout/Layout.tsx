@@ -8,11 +8,11 @@ interface LayoutProps {
 
 function Layout({ children }: LayoutProps) {
   return (
-    <Box position="relative" maxW="800px" margin="0 auto" overflow="hidden">
+    <Box position="relative" maxW="800px" margin="0 auto">
       <Box as="nav" position="fixed" top={0} left={0} right={0} zIndex={100} maxW="800px" width="100%" margin="0 auto">
         <Navbar />
       </Box>
-      <Box as="main" pt="54px" height="100vh" bg="#fff8dc">
+      <Box as="main" pt="54px" minH="100vh" bg="#fff8dc">
         {children}
       </Box>
     </Box>

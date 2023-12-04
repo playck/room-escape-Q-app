@@ -3,18 +3,22 @@ import { useState, useRef } from 'react'
 import _ from 'lodash'
 import { IoMdLock, IoMdUnlock } from 'react-icons/io'
 import { FaArrowRotateRight } from 'react-icons/fa6'
-interface InputBoardProps {}
+import { Question } from '@/lib/constant/questions'
+
+interface InputBoardProps {
+  question: Question
+}
 
 type InputType = {
   inputType: 'number' | 'alphanumeric' | undefined
 }
 
-function InputBoard(props: InputBoardProps) {
-  const count = [1, 2, 3, 4]
+function InputBoard({ question }: InputBoardProps) {
   const [inputValue, setInputValue] = useState<string | number>('')
   const [inputType, setInputType] = useState<InputType['inputType']>('alphanumeric')
   const [isCorrect, setIsCorrent] = useState<boolean>(false)
   const firstInputRef = useRef<HTMLInputElement>(null)
+  const { answer } = question
 
   const onSubmitAnswer = () => {
     if (inputValue === 'real') {
@@ -36,9 +40,9 @@ function InputBoard(props: InputBoardProps) {
       <Center bg="#FFF" p="20px" borderRadius="10px">
         <HStack gap="0.8rem">
           <PinInput type={inputType} value={inputValue as string} placeholder="" onChange={(e) => setInputValue(e)}>
-            {count.map((el, idx) => (
+            {Array.from(answer).map((el, idx) => (
               <PinInputField
-                key={el}
+                key={el + idx}
                 ref={idx === 0 ? firstInputRef : undefined}
                 className="input"
                 sx={{

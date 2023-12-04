@@ -1,9 +1,14 @@
-import { Box, Flex } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import { ImageBox, TextBox } from '.'
+import { Question } from '@/lib/constant/questions'
 
-interface QuestionSectionProps {}
+interface QuestionSectionProps {
+  question: Question
+}
 
-function QuestionSection(props: QuestionSectionProps) {
+function QuestionSection({ question }: QuestionSectionProps) {
+  const { id, questionDesc, answer, isHintIcon } = question
+
   return (
     <Flex
       as="section"
@@ -15,8 +20,8 @@ function QuestionSection(props: QuestionSectionProps) {
       pt="40px"
       alignItems="center"
     >
-      <ImageBox />
-      <TextBox />
+      <ImageBox id={id} />
+      {questionDesc ? <TextBox questionDesc={questionDesc} /> : <></>}
     </Flex>
   )
 }

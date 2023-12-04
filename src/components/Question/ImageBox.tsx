@@ -1,12 +1,10 @@
-import { Box, Center, Image } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
+import { Center, Image } from '@chakra-ui/react'
 
-interface ImageBoxProps {}
+interface ImageBoxProps {
+  id: number
+}
 
-function ImageBox(props: ImageBoxProps) {
-  const router = useRouter()
-  const { id } = router.query
-
+function ImageBox({ id }: ImageBoxProps) {
   return (
     <Center
       p="12px"
@@ -16,7 +14,7 @@ function ImageBox(props: ImageBoxProps) {
       width="fit-content"
       boxShadow="0px 3px 5px rgba(0, 0, 0, 0.1)"
     >
-      <Image width="100%" height="100%" objectFit="cover" src={`/images/q-${id}.png`} alt="question-img" />
+      <Image width="100%" height="100%" objectFit="cover" src={`/images/questions/q-${id}.png`} alt="question-img" />
     </Center>
   )
 }
