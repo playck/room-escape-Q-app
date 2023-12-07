@@ -2,8 +2,11 @@ import { Button, Center, Flex, HStack, PinInput, PinInputField } from '@chakra-u
 import { useState, useRef } from 'react'
 import _ from 'lodash'
 import { IoMdLock, IoMdUnlock } from 'react-icons/io'
-import { FaArrowRotateRight } from 'react-icons/fa6'
 import { Question } from '@/lib/constant/questions'
+import { PiArrowUUpLeftLight } from 'react-icons/pi'
+import { HiLightBulb } from 'react-icons/hi'
+import { useRecoilState } from 'recoil'
+import { ModalState } from '@/atoms/etc/modal'
 
 interface InputBoardProps {
   question: Question
@@ -18,10 +21,13 @@ function InputBoard({ question }: InputBoardProps) {
   const [inputType, setInputType] = useState<InputType['inputType']>('alphanumeric')
   const [isCorrect, setIsCorrent] = useState<boolean>(false)
   const firstInputRef = useRef<HTMLInputElement>(null)
+  const [modal, setModal] = useRecoilState(ModalState)
+  const { isOpen } = modal
+
   const { answer } = question
 
   const onSubmitAnswer = () => {
-    if (inputValue === 'real') {
+    if (inputValue === answer) {
       setIsCorrent(true)
     } else {
       alert('틀렸습니다.')
@@ -36,7 +42,41 @@ function InputBoard({ question }: InputBoardProps) {
   }
 
   return (
-    <Flex px="50px" justifyContent="center" alignItems="center" direction="column">
+    <Flex px="50px" pb="100px" justifyContent="center" alignItems="center" direction="column">
+      <Flex width="100%" justifyContent="center" mb="15px" gap="10px">
+        <Button
+          bg="gray.800"
+          color="white"
+          px="20px"
+          sx={{
+            '&:hover': {
+              bg: 'gray.600',
+            },
+          }}
+        >
+          <HiLightBulb
+            size={24}
+            onClick={() =>
+              setModal({
+                isOpen: true,
+                content: <></>,
+              })
+            }
+          />
+        </Button>
+        <Button
+          bg="gray.800"
+          color="white"
+          px="20px"
+          sx={{
+            '&:hover': {
+              bg: 'gray.600',
+            },
+          }}
+        >
+          <PiArrowUUpLeftLight size={24} onClick={() => onResetInputValue()} />
+        </Button>
+      </Flex>
       <Center bg="#FFF" p="20px" borderRadius="10px">
         <HStack gap="0.8rem">
           <PinInput type={inputType} value={inputValue as string} placeholder="" onChange={(e) => setInputValue(e)}>
@@ -58,30 +98,23 @@ function InputBoard({ question }: InputBoardProps) {
       </Center>
       <Flex alignItems="center" mt="20px" gap="10px">
         <Button
-          p="23px"
+          p="30px"
           bg="gray.800"
+          width="80px"
+          height="80px"
           color="white"
+          borderRadius="9999px"
           sx={{
             '&:hover': {
               backgroundColor: 'gray.800',
+            },
+            svg: {
+              flexShrink: '0',
             },
           }}
           onClick={() => onSubmitAnswer()}
         >
-          {isCorrect ? <IoMdUnlock size={30} /> : <IoMdLock size={30} />}
-        </Button>
-        <Button
-          py="23px"
-          bg="gray.800"
-          color="white"
-          sx={{
-            '&:hover': {
-              backgroundColor: 'gray.800',
-            },
-          }}
-          onClick={() => onResetInputValue()}
-        >
-          <FaArrowRotateRight size={20} />
+          {isCorrect ? <IoMdUnlock size={40} /> : <IoMdLock size={40} />}
         </Button>
       </Flex>
     </Flex>

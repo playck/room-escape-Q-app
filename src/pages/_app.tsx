@@ -3,9 +3,12 @@ import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from '@/chakra/theme'
 import { Layout } from '@/components/Layout'
-import { Navbar } from '@/components/NavBar'
 import { NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
+import { RecoilRoot, RecoilEnv } from 'recoil'
+import ModalFrame from '@/components/Modal/ModalFrame'
+
+RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -16,13 +19,16 @@ type AppPropsWithLayout = AppProps & {
 }
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>)
+  // const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>)
 
   return (
-    <ChakraProvider theme={theme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ChakraProvider>
+    <RecoilRoot>
+      <ChakraProvider theme={theme}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        <ModalFrame />
+      </ChakraProvider>
+    </RecoilRoot>
   )
 }
