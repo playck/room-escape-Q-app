@@ -4,6 +4,7 @@ export interface Question {
   questionDesc?: string
   answer: string
   isSolved: boolean
+  isInterative?: boolean
   isHintIcon?: string
   answerType?: string
   hint?: string
@@ -92,5 +93,12 @@ export const questionList: Question[] = [
     answer: '3',
     isSolved: false,
     answerDesc: '숫자의 가운데 자리를 7로 곱한 값을 숫자의 양쪽에 위치하면 됩니다. 124 => 7 x 2 = 14',
+  },
+  {
+    id: 13,
+    answer: '753',
+    isSolved: false,
+    answerDesc: '카드 양면의 모양을 겹치면 숫자가 그려집니다.',
+    isInterative: true,
   },
 ]
