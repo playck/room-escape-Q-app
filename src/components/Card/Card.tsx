@@ -12,6 +12,7 @@ function Card(props: CardProps) {
   const { frontImg, backImg, isUseFlip } = props
 
   const onFlipCard = () => {
+    if (!isUseFlip) return
     setFlipped(!isFlipped)
   }
 
