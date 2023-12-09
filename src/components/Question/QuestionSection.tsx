@@ -18,7 +18,7 @@ function QuestionSection({ question }: QuestionSectionProps) {
       width="100%"
       gap="20px"
       p="16px"
-      pt="40px"
+      pt="35px"
       alignItems="center"
     >
       {isInterative ? (

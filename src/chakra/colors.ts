@@ -55,6 +55,12 @@ const colors = {
   checked: {
     primary: { 500: '#00A576' },
   },
+  button: {
+    orange: '#FFAA40',
+    lightBlue: '#5DC8CD',
+    green: '#00AE68',
+    purple: '#A74982',
+  },
 }
 
 export { colors }
