@@ -7,7 +7,7 @@ interface QuestionsListProps {}
 
 function QuestionsList(props: QuestionsListProps) {
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={6} p="30px 20px">
+    <Grid templateColumns="repeat(3, 1fr)" gap={6} p="10px 20px 30px">
       {questionList.map((el) => (
         <Link key={el.id} href={`questions/${el.id}`}>
           <GridItem

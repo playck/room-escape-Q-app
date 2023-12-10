@@ -6,22 +6,30 @@ interface NavBarProps {}
 
 function NavBar(props: NavBarProps) {
   const router = useRouter()
+  const { pathname } = router
 
   return (
     <>
       <Flex
+        position="fixed"
+        top="0"
+        left="0"
         width="100%"
-        bg="white"
+        bg={router.query?.id ? '#FFF' : 'transparent'}
         height="54px"
         justify="space-between"
         align="center"
         padding="16px 20px"
         borderBottom="1px solid"
-        borderBottomColor="gray.10"
+        borderBottomColor={router.query?.id ? 'gray.10' : 'transparent'}
       >
-        <Flex justifyContent="space-between" cursor="pointer" py="20px" pr="20px" onClick={() => router.back()}>
-          <FaAngleLeft size={20} />
-        </Flex>
+        {pathname !== '/' ? (
+          <Flex justifyContent="space-between" cursor="pointer" py="20px" pr="20px" onClick={() => router.back()}>
+            <FaAngleLeft size={20} />
+          </Flex>
+        ) : (
+          <></>
+        )}
       </Flex>
     </>
   )
