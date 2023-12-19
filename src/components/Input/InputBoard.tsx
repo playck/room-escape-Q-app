@@ -8,7 +8,7 @@ import { HiLightBulb } from 'react-icons/hi'
 import { useRecoilState } from 'recoil'
 import { ModalState } from '@/atoms/etc/modal'
 import { useRouter } from 'next/router'
-import { DefaultButton } from '../Button'
+import { DefaultButton, DirectionLockButton } from '../Button'
 import { colors } from '@/chakra/colors'
 import { InputAnswerState } from '@/atoms/input/inputAnswer'
 
@@ -23,7 +23,7 @@ type InputType = {
 function InputBoard({ question }: InputBoardProps) {
   const [inputValue, setInputValue] = useRecoilState(InputAnswerState)
   const [inputType, setInputType] = useState<InputType['inputType']>('alphanumeric')
-  const [isCorrect, setIsCorrent] = useState<boolean>(false)
+  const [isCorrect, setIsCorrect] = useState<boolean>(false)
   const [modal, setModal] = useRecoilState(ModalState)
   const firstInputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
@@ -33,7 +33,7 @@ function InputBoard({ question }: InputBoardProps) {
 
   const onSubmitAnswer = () => {
     if (inputValue === answer) {
-      setIsCorrent(true)
+      setIsCorrect(true)
     } else {
       alert('틀렸습니다.')
     }
