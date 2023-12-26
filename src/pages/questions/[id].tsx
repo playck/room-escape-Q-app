@@ -26,8 +26,8 @@ function Question(props: QuestionProps) {
   })
 
   useEffect(() => {
-    const currQuestion = questionList.filter((q) => String(q.id) == (id as string))
-    setQuestion(currQuestion[0])
+    const currQuestion = questionList.filter((q) => String(q.id) == (id as string))[0]
+    setQuestion(currQuestion)
   }, [id])
 
   if (question == undefined) return <></>

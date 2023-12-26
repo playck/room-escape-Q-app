@@ -1,16 +1,15 @@
-import { Button, Center, Flex, HStack, PinInput, PinInputField, Text } from '@chakra-ui/react'
-import { useState, useRef } from 'react'
+import { Box, Button, Center, Flex, HStack, PinInput, PinInputField, Text } from '@chakra-ui/react'
+import { useState, useRef, useEffect } from 'react'
 import _ from 'lodash'
-import { IoMdLock, IoMdUnlock, IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 import { Question } from '@/lib/constant/questions'
-import { PiArrowUUpLeftLight } from 'react-icons/pi'
-import { HiLightBulb } from 'react-icons/hi'
 import { useRecoilState } from 'recoil'
 import { ModalState } from '@/atoms/etc/modal'
 import { useRouter } from 'next/router'
-import { DefaultButton, DirectionLockButton } from '../Button'
+import { DefaultButton } from '../Button'
 import { colors } from '@/chakra/colors'
-import { InputAnswerState } from '@/atoms/input/inputAnswer'
+import { InputAnswerState, isAnswerCorrectState } from '@/atoms/input/inputAnswer'
+import AnswerModal from '../Modal/AnswerModal'
 
 interface InputBoardProps {
   question: Question
@@ -23,13 +22,12 @@ type InputType = {
 function InputBoard({ question }: InputBoardProps) {
   const [inputValue, setInputValue] = useRecoilState(InputAnswerState)
   const [inputType, setInputType] = useState<InputType['inputType']>('alphanumeric')
-  const [isCorrect, setIsCorrect] = useState<boolean>(false)
+  const [isCorrect, setIsCorrect] = useRecoilState(isAnswerCorrectState)
   const [modal, setModal] = useRecoilState(ModalState)
   const firstInputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
-  const { isOpen } = modal
   const { id } = router.query
-  const { answer } = question
+  const { answer, isAnswerImage, answerDesc } = question
 
   const onSubmitAnswer = () => {
     if (inputValue === answer) {
@@ -46,6 +44,13 @@ function InputBoard({ question }: InputBoardProps) {
     }
   }
 
+  useEffect(() => {
+    return () => {
+      setInputValue('')
+      setIsCorrect(false)
+    }
+  }, [router])
+
   return (
     <Flex px="50px" pb="100px" justifyContent="center" alignItems="center" direction="column">
       <Flex width="100%" justifyContent="center" mb="15px" gap="10px">
@@ -53,46 +58,54 @@ function InputBoard({ question }: InputBoardProps) {
           bg="gray.800"
           color="white"
           px="20px"
+          py="30px"
+          width="65px"
           sx={{
             '&:hover': {
               bg: 'gray.600',
             },
           }}
+          onClick={() =>
+            setModal({
+              isOpen: true,
+              content: <></>,
+            })
+          }
         >
-          <HiLightBulb
-            size={24}
-            onClick={() =>
-              setModal({
-                isOpen: true,
-                content: <></>,
-              })
-            }
-          />
+          <Text fontSize="32px">💡</Text>
         </Button>
         <Button
           bg="gray.800"
           color="white"
           px="20px"
+          py="30px"
+          width="65px"
           sx={{
             '&:hover': {
               bg: 'gray.600',
             },
           }}
+          onClick={() => onResetInputValue()}
         >
-          <PiArrowUUpLeftLight size={24} onClick={() => onResetInputValue()} />
+          <Text fontSize="32px">↺</Text>
         </Button>
       </Flex>
       <Center bg="#FFF" p="20px" borderRadius="10px">
-        <HStack gap="0.8rem">
+        <HStack gap="0.8rem" pointerEvents={isCorrect ? 'none' : 'auto'}>
           <PinInput type={inputType} value={inputValue as string} placeholder="" onChange={(e) => setInputValue(e)}>
             {Array.from(answer).map((el, idx) => (
               <PinInputField
                 key={el + idx}
                 ref={idx === 0 ? firstInputRef : undefined}
                 className="input"
+                minW="50px"
+                minH="50px"
+                border="2px solid"
+                borderColor="gray.1000"
+                fontSize="20px"
                 sx={{
                   '&:focus-visible': {
-                    borderColor: 'gray.100',
+                    borderColor: 'gray.1000',
                     boxShadow: `0 0 0 1px transparent`,
                   },
                 }}
@@ -104,14 +117,14 @@ function InputBoard({ question }: InputBoardProps) {
       <Flex alignItems="center" my="20px" gap="10px">
         <Button
           p="30px"
-          bg="gray.800"
+          bg="gray.1000"
           width="80px"
           height="80px"
           color="white"
           borderRadius="9999px"
           sx={{
             '&:hover': {
-              backgroundColor: 'gray.800',
+              backgroundColor: 'gray.1000',
             },
             svg: {
               flexShrink: '0',
@@ -119,8 +132,26 @@ function InputBoard({ question }: InputBoardProps) {
           }}
           onClick={() => onSubmitAnswer()}
         >
-          {isCorrect ? <IoMdUnlock size={40} /> : <IoMdLock size={40} />}
+          {isCorrect ? <Text fontSize="40px">🔓️</Text> : <Text fontSize="40px">🔒</Text>}
         </Button>
+        {isCorrect && (
+          <Button
+            p="30px"
+            bg="gray.1000"
+            width="80px"
+            height="80px"
+            color="white"
+            borderRadius="9999px"
+            onClick={() =>
+              setModal({
+                isOpen: true,
+                content: <AnswerModal isAnswerImage={isAnswerImage} answerDesc={answerDesc} />,
+              })
+            }
+          >
+            <Text fontSize="40px">❓</Text>
+          </Button>
+        )}
       </Flex>
       {isCorrect ? (
         <Flex

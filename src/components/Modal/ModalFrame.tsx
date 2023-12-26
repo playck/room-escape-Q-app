@@ -19,13 +19,7 @@ function ModalFrame(props: ModalFrameProps) {
   return (
     <Modal onClose={() => resetModalInfo()} size="md" isOpen={isOpen} isCentered motionPreset="slideInBottom">
       <ModalOverlay />
-      <ModalContent mx="20px">
-        <ModalHeader>Hint</ModalHeader>
-        <ModalBody>hint</ModalBody>
-        <ModalFooter>
-          <Button onClick={() => resetModalInfo()}>Close</Button>
-        </ModalFooter>
-      </ModalContent>
+      <ModalContent mx="20px">{content}</ModalContent>
     </Modal>
   )
 }
