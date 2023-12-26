@@ -8,7 +8,7 @@ interface LayoutProps {
 
 function Layout({ children }: LayoutProps) {
   return (
-    <Box position="relative" maxW="800px" margin="0 auto" background="linear-gradient(to top, #292E49, #536976)">
+    <Box position="relative" maxW="800px" margin="0 auto">
       <Box
         as="nav"
         position="absolute"
@@ -22,7 +22,7 @@ function Layout({ children }: LayoutProps) {
       >
         <Navbar />
       </Box>
-      <Box as="main" pt="54px" minH="100vh">
+      <Box as="main" pt="54px" minH="100vh" background="linear-gradient(to bottom, #414345, #232526);">
         {children}
       </Box>
     </Box>
@@ -31,3 +31,6 @@ function Layout({ children }: LayoutProps) {
 
 export default Layout
 // bg="#fff8dc"
+// background: #232526;  /* fallback for old browsers */
+// background: -webkit-linear-gradient(to bottom, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+// background: linear-gradient(to bottom, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
