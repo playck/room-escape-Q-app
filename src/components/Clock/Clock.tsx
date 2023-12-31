@@ -1,8 +1,9 @@
+import { InputAnswerState } from '@/atoms/input/inputAnswer'
 import { clockInputArrayAtomState } from '@/atoms/input/inputs'
 import { Box, Button, Center, Flex, Image, Text } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { HiArrowPath } from 'react-icons/hi2'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 interface ClockProps {
   index: string
 }
@@ -11,6 +12,9 @@ function Clock(props: ClockProps) {
   const [bigclockDeg, setBigClockDeg] = useState(0)
   const [smallClockDeg, setSmallClockDeg] = useState(-6)
   const [clockData, setClockData] = useRecoilState(clockInputArrayAtomState(props.index))
+  const hour = clockData.hour
+  const min = clockData.min
+  const setInputAnswer = useSetRecoilState(InputAnswerState)
 
   const onHandleBigClock = () => {
     if (bigclockDeg == -12) {
@@ -55,6 +59,12 @@ function Clock(props: ClockProps) {
       })
     }
   }, [smallClockDeg])
+
+  useEffect(() => {
+    if (hour * min == 45 && hour + min == 12) {
+      setInputAnswer(true)
+    }
+  }, [clockData])
 
   return (
     <>

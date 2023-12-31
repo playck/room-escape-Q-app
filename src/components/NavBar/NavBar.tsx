@@ -16,7 +16,7 @@ function NavBar(props: NavBarProps) {
       transform="translateX(-50%)"
       maxW="800px"
       width="100%"
-      bg={router.query?.id ? '#FFF' : 'transparent'}
+      bg={pathname === '/' ? 'transparent' : 'white'}
       height="54px"
       justify="space-between"
       align="center"

@@ -1,6 +1,6 @@
 import { atom } from 'recoil'
 
-export const InputAnswerState = atom<string>({
+export const InputAnswerState = atom<any>({
   key: 'InputAnswerState',
   default: '',
 })

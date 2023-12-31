@@ -27,7 +27,7 @@ function InputBoard({ question }: InputBoardProps) {
   const firstInputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
   const { id } = router.query
-  const { answer, isAnswerImage, answerDesc } = question
+  const { answer, isAnswerImage, answerDesc, isInterative } = question
 
   const onSubmitAnswer = () => {
     if (inputValue === answer) {
@@ -90,30 +90,32 @@ function InputBoard({ question }: InputBoardProps) {
           <Text fontSize="32px">↺</Text>
         </Button>
       </Flex>
-      <Center bg="#FFF" p="20px" borderRadius="10px">
-        <HStack gap="0.8rem" pointerEvents={isCorrect ? 'none' : 'auto'}>
-          <PinInput type={inputType} value={inputValue as string} placeholder="" onChange={(e) => setInputValue(e)}>
-            {Array.from(answer).map((el, idx) => (
-              <PinInputField
-                key={el + idx}
-                ref={idx === 0 ? firstInputRef : undefined}
-                className="input"
-                minW="50px"
-                minH="50px"
-                border="2px solid"
-                borderColor="gray.1000"
-                fontSize="20px"
-                sx={{
-                  '&:focus-visible': {
-                    borderColor: 'gray.1000',
-                    boxShadow: `0 0 0 1px transparent`,
-                  },
-                }}
-              />
-            ))}
-          </PinInput>
-        </HStack>
-      </Center>
+      {!isInterative && (
+        <Center bg="#FFF" p="20px" borderRadius="10px">
+          <HStack gap="0.8rem" pointerEvents={isCorrect ? 'none' : 'auto'}>
+            <PinInput type={inputType} value={inputValue as string} placeholder="" onChange={(e) => setInputValue(e)}>
+              {Array.from(answer).map((el, idx) => (
+                <PinInputField
+                  key={el + idx}
+                  ref={idx === 0 ? firstInputRef : undefined}
+                  className="input"
+                  minW="50px"
+                  minH="50px"
+                  border="2px solid"
+                  borderColor="gray.1000"
+                  fontSize="20px"
+                  sx={{
+                    '&:focus-visible': {
+                      borderColor: 'gray.1000',
+                      boxShadow: `0 0 0 1px transparent`,
+                    },
+                  }}
+                />
+              ))}
+            </PinInput>
+          </HStack>
+        </Center>
+      )}
       <Flex alignItems="center" my="20px" gap="10px">
         <Button
           p="30px"

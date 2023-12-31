@@ -1,9 +1,9 @@
 import { Center, Grid, GridItem } from '@chakra-ui/react'
 import { Card } from '../Card'
 
-interface QuestionsListProps {}
+interface Questions13Props {}
 
-function QuestionsList(props: QuestionsListProps) {
+function Questions13(props: Questions13Props) {
   return (
     <Grid templateColumns="repeat(3, 1fr)" gap="20px">
       <GridItem aspectRatio="1 / 1.3" borderRadius="10px" cursor="pointer">
@@ -25,4 +25,4 @@ function QuestionsList(props: QuestionsListProps) {
   )
 }
 
-export default QuestionsList
+export default Questions13

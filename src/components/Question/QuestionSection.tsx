@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react'
 import { ImageBox, PlayGround, TextBox } from '.'
 import { Question } from '@/lib/constant/questions'
-import { Question13 } from '../InteractiveQuestion'
+import { switchInteractiveQuestion } from '@/lib/utils/switchPlayGround'
 
 interface QuestionSectionProps {
   question: Question
@@ -21,13 +21,7 @@ function QuestionSection({ question }: QuestionSectionProps) {
       pt="35px"
       alignItems="center"
     >
-      {isInterative ? (
-        <PlayGround>
-          <Question13 />
-        </PlayGround>
-      ) : (
-        <ImageBox id={id} />
-      )}
+      {isInterative ? <PlayGround>{switchInteractiveQuestion(id)}</PlayGround> : <ImageBox id={id} />}
       {questionDesc ? <TextBox questionDesc={questionDesc} /> : <></>}
     </Flex>
   )

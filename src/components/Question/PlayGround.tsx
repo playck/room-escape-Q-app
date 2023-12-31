@@ -1,5 +1,7 @@
 import { Box, Center } from '@chakra-ui/react'
 import { Flex, Grid, GridItem } from '@chakra-ui/react'
+import Clock from '../Clock/Clock'
+import { GridBoard } from '../GridBoard'
 
 interface PlayGroundProps {
   styleProps?: any
@@ -8,7 +10,7 @@ interface PlayGroundProps {
 
 function PlayGround({ styleProps, children }: PlayGroundProps) {
   return (
-    <Box p="30px 20px" bg="gray.100" width="90%" borderRadius="10px" {...styleProps}>
+    <Box p="20px" bg="gray.100" width="90%" borderRadius="10px" {...styleProps}>
       {children}
     </Box>
   )
