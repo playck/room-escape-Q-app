@@ -10,6 +10,7 @@ import { DefaultButton } from '../Button'
 import { colors } from '@/chakra/colors'
 import { InputAnswerState, isAnswerCorrectState } from '@/atoms/input/inputAnswer'
 import AnswerModal from '../Modal/AnswerModal'
+import HintModal from '../Modal/HintModal'
 
 interface InputBoardProps {
   question: Question
@@ -27,7 +28,7 @@ function InputBoard({ question }: InputBoardProps) {
   const firstInputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
   const { id } = router.query
-  const { answer, isAnswerImage, answerDesc, isInterative } = question
+  const { hint, answer, isAnswerImage, answerDesc, isInterative } = question
 
   const onSubmitAnswer = () => {
     if (inputValue === answer) {
@@ -68,7 +69,7 @@ function InputBoard({ question }: InputBoardProps) {
           onClick={() =>
             setModal({
               isOpen: true,
-              content: <></>,
+              content: <HintModal hint={hint} />,
             })
           }
         >
