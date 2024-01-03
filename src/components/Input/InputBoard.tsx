@@ -136,24 +136,6 @@ function InputBoard({ question }: InputBoardProps) {
         >
           {isCorrect ? <Text fontSize="40px">🔓️</Text> : <Text fontSize="40px">🔒</Text>}
         </Button>
-        {isCorrect && (
-          <Button
-            p="30px"
-            bg="gray.1000"
-            width="80px"
-            height="80px"
-            color="white"
-            borderRadius="9999px"
-            onClick={() =>
-              setModal({
-                isOpen: true,
-                content: <AnswerModal isAnswerImage={isAnswerImage} answerDesc={answerDesc} />,
-              })
-            }
-          >
-            <Text fontSize="40px">❓</Text>
-          </Button>
-        )}
       </Flex>
       {isCorrect ? (
         <Flex
@@ -169,10 +151,22 @@ function InputBoard({ question }: InputBoardProps) {
             },
           }}
         >
-          <DefaultButton style={{ backgroundColor: colors.button.orange }} onClick={() => router.push('/questions')}>
-            <Flex alignItems="center" gap="5px">
-              <IoIosArrowBack size={28} />
-              <Text>문제 리스트</Text>
+          <DefaultButton
+            style={{ backgroundColor: colors.button.orange }}
+            onClick={() =>
+              setModal({
+                isOpen: true,
+                content: <AnswerModal isAnswerImage={isAnswerImage} answerDesc={answerDesc} />,
+              })
+            }
+          >
+            <Flex flex="1" justifyContent="center" alignItems="center" gap="5px">
+              <Text>
+                정답 풀이{' '}
+                <Center display="inline-flex" width="30px" height="30px" borderRadius="50%" bg="gray.1000">
+                  ❓
+                </Center>
+              </Text>
             </Flex>
           </DefaultButton>
           <DefaultButton
