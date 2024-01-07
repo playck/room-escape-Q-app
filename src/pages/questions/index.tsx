@@ -7,7 +7,17 @@ interface QuestionsListProps {}
 
 function QuestionsList(props: QuestionsListProps) {
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={6} p="30px 20px">
+    <Grid
+      templateColumns="repeat(3, 1fr)"
+      gap={6}
+      p="30px 20px"
+      sx={{
+        backgroundColor: 'hsl(0,0%,18%);',
+        WebkitBackgroundSize: '2.5px 2.5px',
+        backgroundImage:
+          '-webkit-linear-gradient( 0deg, hsla(0,0%,0%,0) 0, hsla(0,0%,10%,1) 3px), -webkit-linear-gradient( 90deg, hsla(0,0%,0%,0) 0, hsla(0,0%,10%,1) 5px)',
+      }}
+    >
       {questionList.map((el) => (
         <Link key={el.id} href={`questions/${el.id}`}>
           <GridItem

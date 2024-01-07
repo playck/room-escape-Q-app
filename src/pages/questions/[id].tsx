@@ -33,7 +33,16 @@ function Question(props: QuestionProps) {
   if (question == undefined) return <></>
 
   return (
-    <Flex direction="column" gap="20px" bg="#fff8dc">
+    <Flex
+      direction="column"
+      gap="20px"
+      backgroundColor="hsl(0,0%,18%)"
+      sx={{
+        WebkitBackgroundSize: '2.5px 2.5px',
+        backgroundImage:
+          '-webkit-linear-gradient( 0deg, hsla(0,0%,0%,0) 0, hsla(0,0%,10%,1) 3px), -webkit-linear-gradient( 90deg, hsla(0,0%,0%,0) 0, hsla(0,0%,10%,1) 5px)',
+      }}
+    >
       <QuestionSection question={question} />
       <InputBoard question={question} />
     </Flex>
@@ -41,3 +50,5 @@ function Question(props: QuestionProps) {
 }
 
 export default Question
+
+// bg="#fff8dc" 노란 배경

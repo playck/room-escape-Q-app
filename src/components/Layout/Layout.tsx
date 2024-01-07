@@ -22,7 +22,17 @@ function Layout({ children }: LayoutProps) {
       >
         <Navbar />
       </Box>
-      <Box as="main" pt="54px" minH="100vh" background="linear-gradient(to bottom, #414345, #232526);">
+      <Box
+        as="main"
+        pt="54px"
+        minH="100vh"
+        backgroundColor="hsl(0,0%,18%)"
+        sx={{
+          WebkitBackgroundSize: '2.5px 2.5px',
+          backgroundImage:
+            '-webkit-linear-gradient( 0deg, hsla(0,0%,0%,0) 0, hsla(0,0%,10%,1) 3px), -webkit-linear-gradient( 90deg, hsla(0,0%,0%,0) 0, hsla(0,0%,10%,1) 5px)',
+        }}
+      >
         {children}
       </Box>
     </Box>

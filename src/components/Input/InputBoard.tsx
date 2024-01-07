@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 import _ from 'lodash'
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 import { Question } from '@/lib/constant/questions'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { ModalState } from '@/atoms/etc/modal'
 import { useRouter } from 'next/router'
 import { DefaultButton } from '../Button'
@@ -24,7 +24,7 @@ function InputBoard({ question }: InputBoardProps) {
   const [inputValue, setInputValue] = useRecoilState(InputAnswerState)
   const [inputType, setInputType] = useState<InputType['inputType']>('alphanumeric')
   const [isCorrect, setIsCorrect] = useRecoilState(isAnswerCorrectState)
-  const [modal, setModal] = useRecoilState(ModalState)
+  const setModal = useSetRecoilState(ModalState)
   const firstInputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
   const { id } = router.query
@@ -120,14 +120,14 @@ function InputBoard({ question }: InputBoardProps) {
       <Flex alignItems="center" my="20px" gap="10px">
         <Button
           p="30px"
-          bg="gray.1000"
+          bg="gray.800"
           width="80px"
           height="80px"
           color="white"
           borderRadius="9999px"
           sx={{
             '&:hover': {
-              backgroundColor: 'gray.1000',
+              backgroundColor: 'gray.800',
             },
             svg: {
               flexShrink: '0',
