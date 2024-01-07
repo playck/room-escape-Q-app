@@ -1,20 +1,30 @@
 import { Grid, GridItem } from '@chakra-ui/react'
 import { Board } from '.'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
 import { activeBoardIdxState, gridArrayState } from '@/atoms/input/inputs'
 import { useEffect } from 'react'
 import { InputAnswerState } from '@/atoms/input/inputAnswer'
 
-interface GridBoardProps {}
+interface GridBoardProps {
+  boardTextList: string[]
+  gridRootNum: number
+  answer: string
+  finishIdx: string
+}
 
-function GridBoard(props: GridBoardProps) {
+function GridBoard({ boardTextList, gridRootNum, answer, finishIdx }: GridBoardProps) {
   const [gridArray, setGridArray] = useRecoilState(gridArrayState)
-  const idx = useRecoilValue(activeBoardIdxState)
   const [inputAnswer, setInputAnswer] = useRecoilState(InputAnswerState)
-  const boardTextList = ['START', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'a', 'FINISH']
+  const idx = useRecoilValue(activeBoardIdxState)
+  const onResetIdx = useResetRecoilState(activeBoardIdxState)
 
   useEffect(() => {
-    setGridArray(Array.from({ length: 4 * 4 }, () => ''))
+    setGridArray(Array.from({ length: gridRootNum * gridRootNum }, () => ''))
+    return () => {
+      setGridArray([''])
+      setInputAnswer('')
+      onResetIdx()
+    }
   }, [])
 
   useEffect(() => {
@@ -32,16 +42,16 @@ function GridBoard(props: GridBoardProps) {
   }, [idx])
 
   useEffect(() => {
-    if (idx != '16') return
+    if (idx != finishIdx) return
 
-    if (inputAnswer === '1216') {
+    if (inputAnswer === answer) {
       setTimeout(() => {
         alert('성공')
       }, 500)
     } else {
       setTimeout(() => {
-        alert('실패')
-        setGridArray(Array.from({ length: 4 * 4 }, () => ''))
+        alert('오답입니다.')
+        setGridArray(Array.from({ length: gridRootNum * gridRootNum }, () => ''))
       }, 500)
     }
   }, [inputAnswer])
@@ -52,7 +62,7 @@ function GridBoard(props: GridBoardProps) {
 
   return (
     <>
-      <Grid templateColumns={`repeat(${4}, 1fr)`} border="3px solid black">
+      <Grid templateColumns={`repeat(${gridRootNum}, 1fr)`} border="3px solid black">
         {gridArray.map((val, idx) => (
           <GridItem key={idx + 1}>
             <Board id={idx + 1} val={val} boardTextList={boardTextList} />

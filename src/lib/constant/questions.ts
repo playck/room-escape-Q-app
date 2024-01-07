@@ -153,13 +153,12 @@ export const questionList: Question[] = [
     answerDesc: 'CLOCK - LOCK + HAIR',
   },
   {
-    // 문제 변경, 그 선 있는 라인 문제로
     id: 17,
-    answer: '189981',
+    answer: '639',
     isSolved: false,
-    hint: 'N O R T H를 순서대로 찾아주세요.',
+    hint: 'E A S T를 순서대로 찾아주세요.',
     answerType: 'number',
-    answerDesc: 'A = 1  B = 9  C = 8',
+    isAnswerImage: true,
   },
   {
     id: 18,
@@ -228,7 +227,7 @@ export const questionList: Question[] = [
   },
   {
     id: 26,
-    answer: 'JASON',
+    answer: '',
     isSolved: false,
     hint: 'UP, DOWN',
     answerType: 'string',
