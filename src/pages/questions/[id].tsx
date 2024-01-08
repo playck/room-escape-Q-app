@@ -35,7 +35,7 @@ function Question(props: QuestionProps) {
   return (
     <Flex
       direction="column"
-      gap="20px"
+      gap="10px"
       backgroundColor="hsl(0,0%,18%)"
       sx={{
         WebkitBackgroundSize: '2.5px 2.5px',

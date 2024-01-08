@@ -7,6 +7,7 @@ interface NavBarProps {}
 function NavBar(props: NavBarProps) {
   const router = useRouter()
   const { pathname } = router
+  const { id } = router.query
 
   return (
     <Flex
@@ -30,7 +31,7 @@ function NavBar(props: NavBarProps) {
           cursor="pointer"
           py="20px"
           pr="20px"
-          onClick={() => router.push('/questions')}
+          onClick={() => (id ? router.push('/questions') : router.push('/'))}
         >
           <FaAngleLeft size={20} />
         </Flex>

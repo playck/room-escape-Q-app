@@ -9,7 +9,7 @@ interface TextBoxProps {
 function TextBox({ questionDesc }: TextBoxProps) {
   return (
     <Box>
-      <Text as="p" px="4px" wordBreak="keep-all" whiteSpace="pre-wrap" {...getFontStyle(16, 500, '24px')}>
+      <Text as="p" px="4px" wordBreak="keep-all" whiteSpace="pre-wrap" color="white" {...getFontStyle(16, 500, '24px')}>
         {questionDesc}
       </Text>
     </Box>

@@ -157,6 +157,7 @@ export const questionList: Question[] = [
     answer: '639',
     isSolved: false,
     hint: 'E A S T를 순서대로 찾아주세요.',
+    questionDesc: '동쪽으로 따라가시오.',
     answerType: 'number',
     isAnswerImage: true,
   },

@@ -9,14 +9,15 @@ export default function Home() {
       <Flex
         direction="column"
         alignItems="center"
-        gap="20px"
+        gap="30px"
         mb="30px"
         height="100px"
         color="white"
-        {...getFontStyle(48, 800, '32px')}
+        {...getFontStyle(48, 400, '36px')}
+        fontFamily="main"
       >
         <Text className="main-text-1">방 탈 출</Text>
-        <Text className="main-text-2">훈 련 소</Text>
+        <Text className="main-text-2">부 트 캠 프</Text>
       </Flex>
       <Box
         height="50vh"

@@ -94,7 +94,12 @@ function InputBoard({ question }: InputBoardProps) {
       {!isInterative && (
         <Center bg="#FFF" p="20px" borderRadius="10px">
           <HStack gap="0.8rem" pointerEvents={isCorrect ? 'none' : 'auto'}>
-            <PinInput type={inputType} value={inputValue as string} placeholder="" onChange={(e) => setInputValue(e)}>
+            <PinInput
+              type={inputType}
+              value={inputValue as string}
+              placeholder=""
+              onChange={(e) => setInputValue(e.toUpperCase())}
+            >
               {Array.from(answer).map((el, idx) => (
                 <PinInputField
                   key={el + idx}
