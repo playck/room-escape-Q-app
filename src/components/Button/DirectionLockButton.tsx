@@ -20,7 +20,7 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
   const y = useMotionValue(initialY) // Y 좌표를 관리하는 변수
   const resetX = useTransform(x, [0, 1], [initialX, 0]) // X 좌표를 초기 값으로 되돌리기 위한 변환 함수
   const resetY = useTransform(y, [0, 1], [initialY, 0]) // Y 좌표를 초기 값으로 되돌리기 위한 변환 함수
-  const [directedValueArr, setDirectedValueArr] = useState([0, 0, 0, 0]) // 좌,우,상,하
+  const [directedValueArr, setDirectedValueArr] = useState<string>('') // 좌,우,상,하
 
   const handleDragEnd = () => {
     // 드래그 종료 시 마지막 좌표값 저장 및 원래 위치로 되돌리기
@@ -38,38 +38,38 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
 
   const onHandleDirectionValue = () => {
     if (lastDragX <= -22) {
-      const counted = _.set(directedValueArr, 0, directedValueArr[0] + 1)
+      const counted = directedValueArr + '좌'
       setDirectedValueArr(counted)
       return
     } else if (lastDragX >= 22) {
-      const counted = _.set(directedValueArr, 1, directedValueArr[1] + 1)
+      const counted = directedValueArr + '우'
       setDirectedValueArr(counted)
       return
     } else if (lastDragY <= -22) {
-      const counted = _.set(directedValueArr, 2, directedValueArr[2] + 1)
+      const counted = directedValueArr + '상'
       setDirectedValueArr(counted)
       return
     } else if (lastDragY >= 22) {
-      const counted = _.set(directedValueArr, 3, directedValueArr[3] + 1)
+      const counted = directedValueArr + '하'
       setDirectedValueArr(counted)
       return
     }
   }
 
   const onCheckAnswer = () => {
-    if (directedValueArr.join('') === answer) {
+    if (directedValueArr === answer) {
       setIsCorrect(true)
     }
   }
 
   return (
-    <Flex direction="column" position="relative" mt="80px">
+    <Flex direction="column" position="relative" mt="100px" mb="35px">
       <Box onClick={() => onCheckAnswer()}>
-        <Box position="absolute" top="-80px" left="50px">
-          <IoIosArrowUp size={20} />
+        <Box position="absolute" top="-90px" left="50px">
+          <IoIosArrowUp size={20} color="white" />
         </Box>
-        <Box position="absolute" top="-86px" left="50px">
-          <IoIosArrowUp size={20} />
+        <Box position="absolute" top="-96px" left="50px">
+          <IoIosArrowUp size={20} color="white" />
         </Box>
       </Box>
       <Box
@@ -91,7 +91,9 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
         top="-32px"
         left={`${isCorrect ? '48px' : '42px'}  `}
         zIndex="2"
-        onClick={() => setDirectedValueArr([0, 0, 0, 0])}
+        cursor="pointer"
+        color="white"
+        onClick={() => setDirectedValueArr('')}
       >
         {isCorrect ? <FcApproval size={25} /> : <Text {...getFontStyle(15, 500, '20px')}>reset</Text>}
       </Box>
@@ -132,6 +134,7 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
               background="#FFF"
               borderRadius="50%"
               boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;"
+              cursor="pointer"
             />
           </motion.div>
         </Center>

@@ -138,11 +138,12 @@ export const questionList: Question[] = [
   },
   {
     id: 15,
-    answer: '1211',
+    answer: '좌상우우하',
     isSolved: false,
     hint: '이름 자체가 아니라 앞 글자의 자음에 집중 해 주세요.',
-    answerType: 'device',
-    answerDesc: '각 지역 이름의 앞 글자를 보면 ㄷ => 동, ㅅ => 서, ㄴ => 남, , ㅂ => 북을 의미합니다.',
+    answerType: 'direction',
+    answerDesc:
+      '각 지역 이름의 앞 글자를 보면 ㄷ => 동, ㅅ => 서, ㄴ => 남, ㅂ => 북을 의미합니다. \n 왼,위,오,오,아래 방향 순서입니다.',
   },
   {
     id: 16,

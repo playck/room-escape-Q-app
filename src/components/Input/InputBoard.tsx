@@ -6,7 +6,7 @@ import { Question } from '@/lib/constant/questions'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { ModalState } from '@/atoms/etc/modal'
 import { useRouter } from 'next/router'
-import { DefaultButton } from '../Button'
+import { DefaultButton, DirectionLockButton } from '../Button'
 import { colors } from '@/chakra/colors'
 import { InputAnswerState, isAnswerCorrectState } from '@/atoms/input/inputAnswer'
 import AnswerModal from '../Modal/AnswerModal'
@@ -92,7 +92,7 @@ function InputBoard({ question }: InputBoardProps) {
           <Text fontSize="32px">↺</Text>
         </Button>
       </Flex>
-      {!isInterative && (
+      {!isInterative && answerType != 'direction' && (
         <Center minW="120px" position="relative" bg="#FFF" p="20px" pt="35px" borderRadius="10px">
           <HStack gap="0.8rem" pointerEvents={isCorrect ? 'none' : 'auto'}>
             <PinInput
@@ -126,27 +126,31 @@ function InputBoard({ question }: InputBoardProps) {
           </Text>
         </Center>
       )}
-      <Flex alignItems="center" my="20px" gap="10px">
-        <Button
-          p="30px"
-          bg="gray.800"
-          width="80px"
-          height="80px"
-          color="white"
-          borderRadius="9999px"
-          sx={{
-            '&:hover': {
-              backgroundColor: 'gray.800',
-            },
-            svg: {
-              flexShrink: '0',
-            },
-          }}
-          onClick={() => onSubmitAnswer()}
-        >
-          {isCorrect ? <Text fontSize="40px">🔓️</Text> : <Text fontSize="40px">🔒</Text>}
-        </Button>
-      </Flex>
+      {answerType == 'direction' ? (
+        <DirectionLockButton answer={answer} isCorrect={isCorrect} setIsCorrect={setIsCorrect} />
+      ) : (
+        <Flex alignItems="center" my="20px" gap="10px">
+          <Button
+            p="30px"
+            bg="gray.800"
+            width="80px"
+            height="80px"
+            color="white"
+            borderRadius="9999px"
+            sx={{
+              '&:hover': {
+                backgroundColor: 'gray.800',
+              },
+              svg: {
+                flexShrink: '0',
+              },
+            }}
+            onClick={() => onSubmitAnswer()}
+          >
+            {isCorrect ? <Text fontSize="40px">🔓️</Text> : <Text fontSize="40px">🔒</Text>}
+          </Button>
+        </Flex>
+      )}
       {isCorrect ? (
         <Flex
           gap="10px"
