@@ -245,11 +245,11 @@ export const questionList: Question[] = [
   },
   {
     id: 28,
-    answer: '5022',
+    answer: '3122',
     isSolved: false,
-    hint: '숫자가 점점 증가하는 것으로 보입니다.',
+    hint: '달력을 생각해주세요.',
     answerType: 'number',
-    answerDesc: '첫 숫자 2부터 2n씩 증가합니다. 2(+3)5(+5)10(+7)17(+9)....',
+    answerDesc: '칸마다 달력 날짜의 마지막 날짜 월이 작성되어 있습니다.',
   },
   {
     id: 29,
