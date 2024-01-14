@@ -1,4 +1,4 @@
-import { Question13, Question19, Question26 } from '@/components/InteractiveQuestion'
+import { Question13, Question19, Question26, Question29 } from '@/components/InteractiveQuestion'
 
 export const switchInteractiveQuestion = (id: number) => {
   switch (id) {
@@ -8,6 +8,8 @@ export const switchInteractiveQuestion = (id: number) => {
       return <Question19 />
     case 26:
       return <Question26 />
+    case 29:
+      return <Question29 />
     default:
       return null
   }

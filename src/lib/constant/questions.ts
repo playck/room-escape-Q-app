@@ -253,11 +253,11 @@ export const questionList: Question[] = [
   },
   {
     id: 29,
-    answer: '5022',
+    answer: '신발장베란다안방창고',
     isSolved: false,
-    hint: '',
+    hint: '각 장소의 칸의 화살표 그림의 위치를 확인 해 주세요.',
     answerType: 'device',
-    answerDesc: '스위치 버튼을 이용하여 위아래의 그림을 합쳐 올바른 형태의 알파벳의 조합입니다.',
+    answerDesc: '각 장소의 칸의 화살표 위치대로 스위치 버튼을 바꿔줍니다.',
     isInterative: true,
   },
   {

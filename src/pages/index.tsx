@@ -16,8 +16,12 @@ export default function Home() {
         {...getFontStyle(48, 400, '36px')}
         fontFamily="main"
       >
-        <Text className="main-text-1">방 탈 출</Text>
-        <Text className="main-text-2">부 트 캠 프</Text>
+        <Text className="main-text-1" filter="drop-shadow(8px 10px 5px #000000)">
+          방 탈 출
+        </Text>
+        <Text className="main-text-2" filter="drop-shadow(8px 10px 5px #000000)">
+          부 트 캠 프
+        </Text>
       </Flex>
       <Box
         height="50vh"
@@ -41,6 +45,7 @@ export default function Home() {
         border="3px solid #FFFFFF"
         borderRadius="50%"
         color="#FFF"
+        cursor="pointer"
         boxShadow="rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;"
         {...getFontStyle(20, 700, '24px')}
         onClick={() => router.push('/questions')}

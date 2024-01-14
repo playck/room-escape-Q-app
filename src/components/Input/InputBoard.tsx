@@ -167,12 +167,10 @@ function InputBoard({ question }: InputBoardProps) {
             }
           >
             <Flex flex="1" justifyContent="center" alignItems="center" gap="5px">
-              <Text>
-                정답 풀이{' '}
-                <Center display="inline-flex" width="30px" height="30px" borderRadius="50%" bg="gray.1000">
-                  ❓
-                </Center>
-              </Text>
+              <Text as="span">정답 풀이</Text>
+              <Center display="inline-flex" width="30px" height="30px" borderRadius="50%" bg="gray.1000">
+                ❓
+              </Center>
             </Flex>
           </DefaultButton>
           <DefaultButton

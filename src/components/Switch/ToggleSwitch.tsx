@@ -2,14 +2,15 @@ import { Box, Flex, Switch, Text } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 
 interface ToggleSwitchProps {
+  idx: number
   top: any
   bottom: any
+  onSwitchToggleBtn: (idx: number, value: string) => void
 }
 
-function ToggleSwitch({ top = 'Y', bottom = '' }: ToggleSwitchProps) {
-  const [topValue, setTopValue] = useState('0')
-  const [bottomValue, setBottomValue] = useState('1')
-  const [selectedValue, setSelectedValue] = useState('0')
+function ToggleSwitch({ idx, top = '', bottom = '', onSwitchToggleBtn }: ToggleSwitchProps) {
+  const [topValue, setTopValue] = useState(top)
+  const [bottomValue, setBottomValue] = useState(bottom)
 
   useEffect(() => {
     setTopValue(top)
@@ -18,9 +19,9 @@ function ToggleSwitch({ top = 'Y', bottom = '' }: ToggleSwitchProps) {
 
   const onToggleSwitch = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      setSelectedValue('0')
+      onSwitchToggleBtn(idx, bottom)
     } else {
-      setSelectedValue('1')
+      onSwitchToggleBtn(idx, top)
     }
   }
 
