@@ -1,7 +1,7 @@
 import { Box, Button, Center, Flex, HStack, PinInput, PinInputField, Text } from '@chakra-ui/react'
 import { useState, useRef, useEffect } from 'react'
 import _ from 'lodash'
-import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
+import { IoIosArrowForward } from 'react-icons/io'
 import { Question } from '@/lib/constant/questions'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { ModalState } from '@/atoms/etc/modal'
@@ -11,6 +11,7 @@ import { colors } from '@/chakra/colors'
 import { InputAnswerState, isAnswerCorrectState } from '@/atoms/input/inputAnswer'
 import AnswerModal from '../Modal/AnswerModal'
 import HintModal from '../Modal/HintModal'
+import { getFontStyle } from '@/chakra/fonts'
 
 interface InputBoardProps {
   question: Question
@@ -28,7 +29,7 @@ function InputBoard({ question }: InputBoardProps) {
   const firstInputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
   const { id } = router.query
-  const { hint, answer, isAnswerImage, answerDesc, isInterative } = question
+  const { hint, answer, isAnswerImage, answerDesc, answerType, isInterative } = question
 
   const onSubmitAnswer = () => {
     if (inputValue === answer) {
@@ -92,7 +93,7 @@ function InputBoard({ question }: InputBoardProps) {
         </Button>
       </Flex>
       {!isInterative && (
-        <Center bg="#FFF" p="20px" borderRadius="10px">
+        <Center minW="120px" position="relative" bg="#FFF" p="20px" pt="35px" borderRadius="10px">
           <HStack gap="0.8rem" pointerEvents={isCorrect ? 'none' : 'auto'}>
             <PinInput
               type={inputType}
@@ -120,6 +121,9 @@ function InputBoard({ question }: InputBoardProps) {
               ))}
             </PinInput>
           </HStack>
+          <Text {...getFontStyle(12, 500, '24px')} position="absolute" top="6px" left="20px">
+            TYPE: {answerType}
+          </Text>
         </Center>
       )}
       <Flex alignItems="center" my="20px" gap="10px">
