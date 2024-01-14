@@ -172,7 +172,7 @@ export const questionList: Question[] = [
   },
   {
     id: 19,
-    answer: '1',
+    answer: 'true',
     isSolved: false,
     hint: '더했을 때 , 곱했을 때의 시간은 무엇일까요?',
     answerType: 'device',

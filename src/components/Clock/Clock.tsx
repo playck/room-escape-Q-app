@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react'
 import { HiArrowPath } from 'react-icons/hi2'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 interface ClockProps {
-  index: string
+  index?: string
 }
 
-function Clock(props: ClockProps) {
+function Clock({ index = '1' }: ClockProps) {
   const [bigclockDeg, setBigClockDeg] = useState(0)
   const [smallClockDeg, setSmallClockDeg] = useState(-6)
-  const [clockData, setClockData] = useRecoilState(clockInputArrayAtomState(props.index))
+  const [clockData, setClockData] = useRecoilState(clockInputArrayAtomState(index))
   const hour = clockData.hour
   const min = clockData.min
   const setInputAnswer = useSetRecoilState(InputAnswerState)
@@ -61,8 +61,8 @@ function Clock(props: ClockProps) {
   }, [smallClockDeg])
 
   useEffect(() => {
-    if (hour * min == 45 && hour + min == 12) {
-      setInputAnswer(true)
+    if (hour * min == 16 && hour + min == 10) {
+      setInputAnswer('true')
     }
   }, [clockData])
 

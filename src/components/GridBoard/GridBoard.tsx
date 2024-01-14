@@ -1,9 +1,9 @@
 import { Grid, GridItem } from '@chakra-ui/react'
 import { Board } from '.'
-import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil'
 import { activeBoardIdxState, gridArrayState } from '@/atoms/input/inputs'
 import { useEffect } from 'react'
-import { InputAnswerState } from '@/atoms/input/inputAnswer'
+import { InputAnswerState, isAnswerCorrectState } from '@/atoms/input/inputAnswer'
 
 interface GridBoardProps {
   boardTextList: string[]
@@ -17,6 +17,7 @@ function GridBoard({ boardTextList, gridRootNum, answer, finishIdx }: GridBoardP
   const [inputAnswer, setInputAnswer] = useRecoilState(InputAnswerState)
   const idx = useRecoilValue(activeBoardIdxState)
   const onResetIdx = useResetRecoilState(activeBoardIdxState)
+  const setIsAnswerCorrect = useSetRecoilState(isAnswerCorrectState)
 
   useEffect(() => {
     setGridArray(Array.from({ length: gridRootNum * gridRootNum }, () => ''))
@@ -46,6 +47,7 @@ function GridBoard({ boardTextList, gridRootNum, answer, finishIdx }: GridBoardP
 
     if (inputAnswer === answer) {
       setTimeout(() => {
+        setIsAnswerCorrect(true)
         alert('성공')
       }, 500)
     } else {
