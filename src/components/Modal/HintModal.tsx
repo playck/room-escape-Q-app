@@ -1,15 +1,33 @@
 import { ModalState } from '@/atoms/etc/modal'
+import { InputAnswerState } from '@/atoms/input/inputAnswer'
 import { getFontStyle } from '@/chakra/fonts'
 import { Question } from '@/lib/constant/questions'
-import { Box, Button, Center, Flex, Image, Text } from '@chakra-ui/react'
-import { useResetRecoilState } from 'recoil'
+import { Box, Button, Center, Flex, Text } from '@chakra-ui/react'
+import { useState } from 'react'
+import { useResetRecoilState, useSetRecoilState } from 'recoil'
 
 interface HintModalProps {
   hint: Question['hint']
+  answer: Question['answer']
 }
 
-function HintModal({ hint = '' }: HintModalProps) {
+function HintModal({ hint = '', answer }: HintModalProps) {
   const resetModalInfo = useResetRecoilState(ModalState)
+  const setInputAnswer = useSetRecoilState(InputAnswerState)
+  const [isAnswerCheck, setIsAnswerCheck] = useState<boolean>(false)
+
+  const onCheckAnswer = () => {
+    setIsAnswerCheck(true)
+  }
+
+  const onCloseModal = () => {
+    resetModalInfo()
+    if (isAnswerCheck) {
+      setTimeout(() => {
+        setInputAnswer(answer)
+      }, 0)
+    }
+  }
 
   return (
     <Center
@@ -28,8 +46,19 @@ function HintModal({ hint = '' }: HintModalProps) {
       <Box p="20px" wordBreak="keep-all" whiteSpace="pre-line">
         <Text {...getFontStyle(15, 500, '24px')}>{hint}</Text>
       </Box>
+      {isAnswerCheck && (
+        <Flex position="absolute" bottom="30%" justifyContent="center">
+          <Text>정답: {answer} </Text>
+        </Flex>
+      )}
+      <Flex position="absolute" bottom="5%" left="5%">
+        <Button height="48px" onClick={() => onCheckAnswer()}>
+          정답 확인
+        </Button>
+      </Flex>
+
       <Flex position="absolute" bottom="5%" right="5%">
-        <Button height="48px" onClick={() => resetModalInfo()}>
+        <Button height="48px" onClick={() => onCloseModal()}>
           닫기
         </Button>
       </Flex>

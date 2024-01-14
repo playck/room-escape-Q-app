@@ -69,7 +69,7 @@ function InputBoard({ question }: InputBoardProps) {
           onClick={() =>
             setModal({
               isOpen: true,
-              content: <HintModal hint={hint} />,
+              content: <HintModal hint={hint} answer={answer} />,
             })
           }
         >
