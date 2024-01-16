@@ -27,14 +27,14 @@ function QuestionsList(props: QuestionsListProps) {
             justifyContent="center"
             alignItems="center"
             aspectRatio="1 / 1.3"
-            bg="#FFF"
+            bg="#e9ecef"
             borderRadius="10px"
             color="gray.700"
             cursor="pointer"
             boxShadow="0px 3px 5px rgba(0, 0, 0, 0.12)"
           >
-            <Center flexDirection="column" gap="16px">
-              <Text fontSize="24px">🔒</Text>
+            <Center flexDirection="column" gap="12px">
+              <Text fontSize="32px">🔒</Text>
               <Center {...getFontStyle(24, 500, '24px')}>{el.id}</Center>
             </Center>
           </GridItem>

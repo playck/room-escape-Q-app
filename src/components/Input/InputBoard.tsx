@@ -55,12 +55,13 @@ function InputBoard({ question }: InputBoardProps) {
 
   return (
     <Flex px="50px" pb="100px" justifyContent="center" alignItems="center" direction="column">
-      <Flex width="100%" justifyContent="center" mb="15px" gap="10px">
+      <Flex width="100%" justifyContent="center" mb="16px" gap="12px">
         <Button
+          minW="80px"
           bg="gray.800"
           color="white"
           px="20px"
-          py="30px"
+          py="32px"
           width="65px"
           sx={{
             '&:hover': {
@@ -74,13 +75,14 @@ function InputBoard({ question }: InputBoardProps) {
             })
           }
         >
-          <Text fontSize="32px">💡</Text>
+          <Text fontSize="36px">💡</Text>
         </Button>
         <Button
+          minW="80px"
           bg="gray.800"
           color="white"
           px="20px"
-          py="30px"
+          py="32px"
           width="65px"
           sx={{
             '&:hover': {
@@ -89,7 +91,7 @@ function InputBoard({ question }: InputBoardProps) {
           }}
           onClick={() => onResetInputValue()}
         >
-          <Text fontSize="32px">↺</Text>
+          <Text fontSize="36px">↺</Text>
         </Button>
       </Flex>
       {!isInterative && answerType != 'direction' && (
@@ -129,12 +131,12 @@ function InputBoard({ question }: InputBoardProps) {
       {answerType == 'direction' ? (
         <DirectionLockButton answer={answer} isCorrect={isCorrect} setIsCorrect={setIsCorrect} />
       ) : (
-        <Flex alignItems="center" my="20px" gap="10px">
+        <Flex alignItems="center" mt="25px" mb="40px">
           <Button
-            p="30px"
+            p="28px"
             bg="gray.800"
-            width="80px"
-            height="80px"
+            width="100px"
+            height="100px"
             color="white"
             borderRadius="9999px"
             sx={{
@@ -147,7 +149,7 @@ function InputBoard({ question }: InputBoardProps) {
             }}
             onClick={() => onSubmitAnswer()}
           >
-            {isCorrect ? <Text fontSize="40px">🔓️</Text> : <Text fontSize="40px">🔒</Text>}
+            {isCorrect ? <Text fontSize="50px">🔓️</Text> : <Text fontSize="50px">🔒</Text>}
           </Button>
         </Flex>
       )}
