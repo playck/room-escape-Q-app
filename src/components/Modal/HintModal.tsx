@@ -9,9 +9,10 @@ import { useResetRecoilState, useSetRecoilState } from 'recoil'
 interface HintModalProps {
   hint: Question['hint']
   answer: Question['answer']
+  interativeAnswer?: Question['interativeAnswer']
 }
 
-function HintModal({ hint = '', answer }: HintModalProps) {
+function HintModal({ hint = '', answer, interativeAnswer }: HintModalProps) {
   const resetModalInfo = useResetRecoilState(ModalState)
   const setInputAnswer = useSetRecoilState(InputAnswerState)
   const [isAnswerCheck, setIsAnswerCheck] = useState<boolean>(false)
@@ -48,7 +49,7 @@ function HintModal({ hint = '', answer }: HintModalProps) {
       </Box>
       {isAnswerCheck && (
         <Flex position="absolute" bottom="30%" justifyContent="center">
-          <Text>정답: {answer} </Text>
+          <Text>정답: {interativeAnswer ? interativeAnswer : answer} </Text>
         </Flex>
       )}
       <Flex position="absolute" bottom="5%" left="5%">

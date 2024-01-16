@@ -31,7 +31,7 @@ function AnswerModal({ isAnswerImage, answerDesc }: AnswerModalProps) {
     >
       {isAnswerImage && <Image src={`/images/answers/a-${id}.png`} alt="answer" />}
       {answerDesc && (
-        <Box p="20px" wordBreak="break-all" whiteSpace="pre-line">
+        <Box p="20px" wordBreak="keep-all" whiteSpace="pre-line">
           <Text {...getFontStyle(15, 500, '24px')}>{answerDesc}</Text>
         </Box>
       )}

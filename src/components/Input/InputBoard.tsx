@@ -31,7 +31,7 @@ function InputBoard({ question }: InputBoardProps) {
   const firstInputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
   const { id } = router.query
-  const { hint, answer, isAnswerImage, answerDesc, answerType, isInterative } = question
+  const { hint, answer, isAnswerImage, answerDesc, answerType, isInterative, interativeAnswer } = question
 
   const onSubmitAnswer = () => {
     if (inputValue === answer) {
@@ -80,7 +80,7 @@ function InputBoard({ question }: InputBoardProps) {
           onClick={() =>
             setModal({
               isOpen: true,
-              content: <HintModal hint={hint} answer={answer} />,
+              content: <HintModal hint={hint} answer={answer} interativeAnswer={interativeAnswer} />,
             })
           }
         >
@@ -98,7 +98,7 @@ function InputBoard({ question }: InputBoardProps) {
               bg: 'gray.600',
             },
           }}
-          onClick={() => onResetInputValue()}
+          onClick={() => !isCorrect && onResetInputValue()}
         >
           <Text fontSize="36px">↺</Text>
         </Button>
@@ -156,7 +156,7 @@ function InputBoard({ question }: InputBoardProps) {
                 flexShrink: '0',
               },
             }}
-            onClick={() => onSubmitAnswer()}
+            onClick={() => !isCorrect && onSubmitAnswer()}
           >
             {isCorrect ? <Text fontSize="50px">🔓️</Text> : <Text fontSize="50px">🔒</Text>}
           </Button>

@@ -3,6 +3,7 @@ export interface Question {
   questionImage?: string
   questionDesc?: string
   answer: string
+  interativeAnswer?: string
   isSolved: boolean
   isInterative?: boolean
   isHintIcon?: string
@@ -172,6 +173,7 @@ export const questionList: Question[] = [
   {
     id: 19,
     answer: 'true',
+    interativeAnswer: '8:10 또는 2:40',
     isSolved: false,
     hint: '더했을 때 , 곱했을 때의 시간은 무엇일까요?',
     answerType: 'device',
@@ -229,6 +231,7 @@ export const questionList: Question[] = [
   {
     id: 26,
     answer: '',
+    interativeAnswer: 'START - R - D - D - R - FINSHI',
     isSolved: false,
     hint: 'UP, DOWN',
     questionDesc: '가리키는 방향대로 도착해야 한다.',
@@ -255,6 +258,7 @@ export const questionList: Question[] = [
   {
     id: 29,
     answer: '신발장베란다안방창고',
+    interativeAnswer: '↓ ↑ ↓ ↑ ↑ ↑ ↓ ↓',
     isSolved: false,
     hint: '각 장소의 칸의 화살표 그림의 위치를 확인 해 주세요.',
     answerType: 'device',
