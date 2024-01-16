@@ -4,6 +4,8 @@ import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState 
 import { activeBoardIdxState, gridArrayState } from '@/atoms/input/inputs'
 import { useEffect } from 'react'
 import { InputAnswerState, isAnswerCorrectState } from '@/atoms/input/inputAnswer'
+import { ModalPropsState, ModalState } from '@/atoms/etc/modal'
+import AlertModal from '../Modal/AlertModal'
 
 interface GridBoardProps {
   boardTextList: string[]
@@ -18,6 +20,8 @@ function GridBoard({ boardTextList, gridRootNum, answer, finishIdx }: GridBoardP
   const idx = useRecoilValue(activeBoardIdxState)
   const onResetIdx = useResetRecoilState(activeBoardIdxState)
   const setIsAnswerCorrect = useSetRecoilState(isAnswerCorrectState)
+  const setModal = useSetRecoilState(ModalState)
+  const setModalProps = useSetRecoilState(ModalPropsState)
 
   useEffect(() => {
     setGridArray(Array.from({ length: gridRootNum * gridRootNum }, () => ''))
@@ -48,11 +52,17 @@ function GridBoard({ boardTextList, gridRootNum, answer, finishIdx }: GridBoardP
     if (inputAnswer === answer) {
       setTimeout(() => {
         setIsAnswerCorrect(true)
-        alert('성공')
       }, 500)
     } else {
       setTimeout(() => {
-        alert('오답입니다.')
+        setModal({
+          isOpen: true,
+          content: <AlertModal msg="잘못된 경로입니다." />,
+        })
+        setModalProps({
+          size: 'xs',
+          isCentered: true,
+        })
         setGridArray(Array.from({ length: gridRootNum * gridRootNum }, () => ''))
       }, 500)
     }

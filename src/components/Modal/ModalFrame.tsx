@@ -1,23 +1,32 @@
-import { ModalState } from '@/atoms/etc/modal'
-import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react'
+import { ModalPropsState, ModalState } from '@/atoms/etc/modal'
+import { Modal, ModalContent, ModalOverlay } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useRecoilState, useResetRecoilState } from 'recoil'
+import { useRecoilValue, useResetRecoilState } from 'recoil'
 import { useEffect } from 'react'
 
 interface ModalFrameProps {}
 
 function ModalFrame(props: ModalFrameProps) {
-  const [ModalInfo, setModalInfo] = useRecoilState(ModalState)
+  const ModalInfo = useRecoilValue(ModalState)
+  const ModalProps = useRecoilValue(ModalPropsState)
   const { isOpen, content } = ModalInfo
   const resetModalInfo = useResetRecoilState(ModalState)
+  const onResetModalProps = useResetRecoilState(ModalPropsState)
   const router = useRouter()
 
   useEffect(() => {
     resetModalInfo()
   }, [router])
 
+  const onCloseModal = () => {
+    resetModalInfo()
+    setTimeout(() => {
+      onResetModalProps()
+    }, 100)
+  }
+
   return (
-    <Modal onClose={() => resetModalInfo()} size="md" isOpen={isOpen} isCentered motionPreset="slideInBottom">
+    <Modal onClose={() => onCloseModal()} {...ModalProps} isOpen={isOpen} motionPreset="slideInBottom">
       <ModalOverlay />
       <ModalContent mx="20px">{content}</ModalContent>
     </Modal>

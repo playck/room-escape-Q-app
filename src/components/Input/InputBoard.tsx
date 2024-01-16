@@ -1,10 +1,10 @@
-import { Box, Button, Center, Flex, HStack, PinInput, PinInputField, Text } from '@chakra-ui/react'
+import { Button, Center, Flex, HStack, PinInput, PinInputField, Text } from '@chakra-ui/react'
 import { useState, useRef, useEffect } from 'react'
 import _ from 'lodash'
 import { IoIosArrowForward } from 'react-icons/io'
 import { Question } from '@/lib/constant/questions'
 import { useRecoilState, useSetRecoilState } from 'recoil'
-import { ModalState } from '@/atoms/etc/modal'
+import { ModalPropsState, ModalState } from '@/atoms/etc/modal'
 import { useRouter } from 'next/router'
 import { DefaultButton, DirectionLockButton } from '../Button'
 import { colors } from '@/chakra/colors'
@@ -12,6 +12,7 @@ import { InputAnswerState, isAnswerCorrectState } from '@/atoms/input/inputAnswe
 import AnswerModal from '../Modal/AnswerModal'
 import HintModal from '../Modal/HintModal'
 import { getFontStyle } from '@/chakra/fonts'
+import AlertModal from '../Modal/AlertModal'
 
 interface InputBoardProps {
   question: Question
@@ -26,6 +27,7 @@ function InputBoard({ question }: InputBoardProps) {
   const [inputType, setInputType] = useState<InputType['inputType']>('alphanumeric')
   const [isCorrect, setIsCorrect] = useRecoilState(isAnswerCorrectState)
   const setModal = useSetRecoilState(ModalState)
+  const setModalProps = useSetRecoilState(ModalPropsState)
   const firstInputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
   const { id } = router.query
@@ -35,7 +37,14 @@ function InputBoard({ question }: InputBoardProps) {
     if (inputValue === answer) {
       setIsCorrect(true)
     } else {
-      alert('틀렸습니다.')
+      setModal({
+        isOpen: true,
+        content: <AlertModal msg="오답입니다." />,
+      })
+      setModalProps({
+        size: 'xs',
+        isCentered: true,
+      })
     }
   }
 
