@@ -25,6 +25,7 @@ function Layout({ children }: LayoutProps) {
       <Box
         as="main"
         pt="54px"
+        pb="10px"
         minH="100vh"
         backgroundColor="hsl(0,0%,18%)"
         sx={{
