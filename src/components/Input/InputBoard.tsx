@@ -19,7 +19,7 @@ interface InputBoardProps {
 }
 
 type InputType = {
-  inputType: 'number' | 'alphanumeric' | undefined
+  inputType: 'number' | 'alphanumeric'
 }
 
 function InputBoard({ question }: InputBoardProps) {
@@ -56,11 +56,13 @@ function InputBoard({ question }: InputBoardProps) {
   }
 
   useEffect(() => {
+    const type = question['answerType'] == 'Number' ? 'number' : 'alphanumeric'
+    setInputType(type)
     return () => {
       setInputValue('')
       setIsCorrect(false)
     }
-  }, [router])
+  }, [router, answerType])
 
   return (
     <Flex px="50px" pb="100px" justifyContent="center" alignItems="center" direction="column">
@@ -108,7 +110,7 @@ function InputBoard({ question }: InputBoardProps) {
           <HStack gap="0.8rem" pointerEvents={isCorrect ? 'none' : 'auto'}>
             <PinInput
               type={inputType}
-              value={inputValue as string}
+              value={inputValue}
               placeholder=""
               onChange={(e) => setInputValue(e.toUpperCase())}
             >
