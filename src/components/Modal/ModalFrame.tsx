@@ -26,7 +26,7 @@ function ModalFrame(props: ModalFrameProps) {
   }
 
   return (
-    <Modal onClose={() => onCloseModal()} {...ModalProps} isOpen={isOpen} motionPreset="slideInBottom">
+    <Modal onClose={() => onCloseModal()} {...ModalProps} isOpen={isOpen}>
       <ModalOverlay />
       <ModalContent mx="20px">{content}</ModalContent>
     </Modal>

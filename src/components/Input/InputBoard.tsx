@@ -13,6 +13,7 @@ import AnswerModal from '../Modal/AnswerModal'
 import HintModal from '../Modal/HintModal'
 import { getFontStyle } from '@/chakra/fonts'
 import AlertModal from '../Modal/AlertModal'
+import confetti from 'canvas-confetti'
 
 interface InputBoardProps {
   question: Question
@@ -33,8 +34,32 @@ function InputBoard({ question }: InputBoardProps) {
   const { id } = router.query
   const { hint, answer, isAnswerImage, answerDesc, answerType, isInterative, interativeAnswer } = question
 
+  useEffect(() => {
+    const type = question['answerType'] == 'Number' ? 'number' : 'alphanumeric'
+    setInputType(type)
+    return () => {
+      setInputValue('')
+      setIsCorrect(false)
+    }
+  }, [router, answerType])
+
+  useEffect(() => {
+    if (isCorrect) {
+      confetti({
+        particleCount: 120,
+        spread: 70,
+        origin: { y: 0.8 },
+      })
+    }
+  }, [isCorrect])
+
   const onSubmitAnswer = () => {
     if (inputValue === answer) {
+      confetti({
+        particleCount: 120,
+        spread: 70,
+        origin: { y: 0.8 },
+      })
       setIsCorrect(true)
     } else {
       setModal({
@@ -55,15 +80,6 @@ function InputBoard({ question }: InputBoardProps) {
     }
   }
 
-  useEffect(() => {
-    const type = question['answerType'] == 'Number' ? 'number' : 'alphanumeric'
-    setInputType(type)
-    return () => {
-      setInputValue('')
-      setIsCorrect(false)
-    }
-  }, [router, answerType])
-
   return (
     <Flex px="50px" pb="100px" justifyContent="center" alignItems="center" direction="column">
       <Flex width="100%" justifyContent="center" mb="16px" gap="12px">
@@ -80,6 +96,7 @@ function InputBoard({ question }: InputBoardProps) {
             },
           }}
           onClick={() =>
+            !isCorrect &&
             setModal({
               isOpen: true,
               content: <HintModal hint={hint} answer={answer} interativeAnswer={interativeAnswer} />,
