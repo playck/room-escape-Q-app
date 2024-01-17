@@ -28,6 +28,21 @@ function Question(props: QuestionProps) {
   useEffect(() => {
     const currQuestion = questionList.filter((q) => String(q.id) == (id as string))[0]
     setQuestion(currQuestion)
+
+    return () => {
+      setQuestion({
+        id: 0,
+        questionImage: '',
+        questionDesc: '',
+        answer: '',
+        isSolved: false,
+        isHintIcon: '',
+        answerType: '',
+        hint: '',
+        isAnswerImage: false,
+        answerDesc: '',
+      })
+    }
   }, [id])
 
   if (question == undefined) return <></>

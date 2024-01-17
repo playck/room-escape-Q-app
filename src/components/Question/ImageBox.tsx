@@ -4,7 +4,7 @@ interface ImageBoxProps {
   id: number
 }
 
-function ImageBox({ id }: ImageBoxProps) {
+function ImageBox({ id = 0 }: ImageBoxProps) {
   return (
     <Center
       p="12px"

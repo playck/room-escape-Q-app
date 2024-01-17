@@ -33,8 +33,8 @@ function QuestionsList(props: QuestionsListProps) {
             cursor="pointer"
             boxShadow="0px 3px 5px rgba(0, 0, 0, 0.12)"
           >
-            <Center flexDirection="column" gap="12px">
-              <Text fontSize="32px">🔒</Text>
+            <Center flexDirection="column" gap="10px">
+              <Text fontSize="40px">🔒</Text>
               <Center {...getFontStyle(24, 500, '24px')}>{el.id}</Center>
             </Center>
           </GridItem>

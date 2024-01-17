@@ -35,7 +35,7 @@ export default function Home() {
       >
         <Image src="/images/main/doormain.png" alt="" />
       </Box>
-      <Flex mt="40px" mb="20px" justifyContent="center">
+      <Flex mt="35px" mb="20px" justifyContent="center">
         <Center
           width="100px"
           height="100px"
