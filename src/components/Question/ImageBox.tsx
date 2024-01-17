@@ -1,4 +1,5 @@
 import { Center, Image } from '@chakra-ui/react'
+import { NextImage } from '../Image'
 
 interface ImageBoxProps {
   id: number
@@ -14,7 +15,7 @@ function ImageBox({ id = 0 }: ImageBoxProps) {
       width="fit-content"
       boxShadow="0px 3px 5px rgba(0, 0, 0, 0.1)"
     >
-      <Image width="100%" height="100%" objectFit="cover" src={`/images/questions/q-${id}.png`} alt="question-img" />
+      <NextImage w="500" h="500" src={`/images/questions/q-${id}.png`} alt="question-img" />
     </Center>
   )
 }

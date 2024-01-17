@@ -1,4 +1,3 @@
-import { getFontStyle } from '@/chakra/fonts'
 import { questionList } from '@/lib/constant/questions'
 import { Center, Grid, GridItem, Text } from '@chakra-ui/react'
 import Link from 'next/link'
@@ -33,9 +32,11 @@ function QuestionsList(props: QuestionsListProps) {
             cursor="pointer"
             boxShadow="0px 3px 5px rgba(0, 0, 0, 0.12)"
           >
-            <Center flexDirection="column" gap="10px">
-              <Text fontSize="40px">🔒</Text>
-              <Center {...getFontStyle(24, 500, '24px')}>{el.id}</Center>
+            <Center flexDirection="column" gap={['10px', '25px']}>
+              <Text fontSize={['40px', '60px']}>🔒</Text>
+              <Center fontSize={['24px', '42px']} fontWeight="500" lineHeight={['24px', '36px']}>
+                {el.id}
+              </Center>
             </Center>
           </GridItem>
         </Link>

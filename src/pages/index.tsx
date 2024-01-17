@@ -10,7 +10,7 @@ export default function Home() {
         direction="column"
         alignItems="center"
         gap="30px"
-        mb="30px"
+        mb={['30px', '50px']}
         height="100px"
         color="white"
         {...getFontStyle(48, 400, '36px')}
@@ -35,16 +35,19 @@ export default function Home() {
       >
         <Image src="/images/main/doormain.png" alt="" />
       </Box>
-      <Flex mt="35px" mb="20px" justifyContent="center">
+      <Flex mt={['35px', '100px']} mb="20px" justifyContent="center">
         <Center
-          width="100px"
-          height="100px"
+          width={['100px', '150px']}
+          height={['100px', '150px']}
+          bg="#202020"
           border="3px solid #FFFFFF"
           borderRadius="50%"
           color="#FFF"
           cursor="pointer"
           boxShadow="rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;"
-          {...getFontStyle(20, 700, '24px')}
+          fontSize={['20px', '32px']}
+          fontWeight="700"
+          lineHeight={['24px', '32px']}
           onClick={() => router.push('/questions')}
         >
           <button className="start-btn">시작</button>

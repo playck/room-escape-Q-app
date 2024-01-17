@@ -40,6 +40,7 @@ function InputBoard({ question }: InputBoardProps) {
     return () => {
       setInputValue('')
       setIsCorrect(false)
+      confetti.reset()
     }
   }, [router, answerType])
 
