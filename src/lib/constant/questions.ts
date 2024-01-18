@@ -41,12 +41,11 @@ export const questionList: Question[] = [
   },
   {
     id: 4,
-    answer: '1320',
+    answer: '9612',
     isSolved: false,
-    hint: '첫째자리와 넷째자리의 숫자를 곱한 값을 다음 숫자에서 찾아주세요.',
+    hint: '시계라고 생각해보고 이어봅니다.',
     answerType: 'Number',
-    answerDesc:
-      '가장 바깥 자리의 숫자의 곱한 값의 십의 자리를 첫째 자리, 일의 자리를 넷째 자리 그리고 안쪽 숫자의 곱한 값은 가운데에 위치합니다.',
+    answerDesc: '시계에서 화살표대로 차례차례 조합하면 됩니다.',
   },
   {
     id: 5,
@@ -70,11 +69,12 @@ export const questionList: Question[] = [
   },
   {
     id: 7,
-    answer: '2497',
+    answer: '좌상우우하',
     isSolved: false,
-    hint: '위의 그림에서 빠진 선들을 찾아 주세요',
-    answerType: 'Number',
-    answerDesc: '위의 日 그림과 문제의 그림의 겹치지 않은 부분을 보면 숫자가 그려집니다.',
+    hint: '이름 자체가 아니라 앞 글자의 자음에 집중 해 주세요.',
+    answerType: 'direction',
+    answerDesc:
+      '각 지역 이름의 앞 글자를 보면 ㄷ => 동, ㅅ => 서, ㄴ => 남, ㅂ => 북을 의미합니다. \n 왼,위,오,오,아래 방향 순서입니다.',
   },
   {
     id: 8,
@@ -87,10 +87,10 @@ export const questionList: Question[] = [
   },
   {
     id: 9,
-    answer: '188',
+    answer: '1320',
     isSolved: false,
-    hint: '첫째 자리 숫자와 넷째 자리 숫자를 곱한 값을 다음 칸에서 찾아주세요.',
-    answerType: 'nubmer',
+    hint: '첫째자리와 넷째자리의 숫자를 곱한 값을 다음 숫자에서 찾아주세요.',
+    answerType: 'Number',
     answerDesc:
       '가장 바깥 자리의 숫자의 곱한 값의 십의 자리를 첫째 자리, 일의 자리를 넷째 자리 그리고 안쪽 숫자의 곱한 값은 가운데에 위치합니다.',
   },
@@ -121,12 +121,11 @@ export const questionList: Question[] = [
   },
   {
     id: 13,
-    answer: '753',
+    answer: '2497',
     isSolved: false,
-    hint: '카드의 앞뒤를 겹쳐서 봐주세요.',
+    hint: '위의 그림에서 빠진 선들을 찾아 주세요',
     answerType: 'Number',
-    answerDesc: '카드 양면의 모양을 겹치면 숫자가 그려집니다.',
-    isInterative: true,
+    answerDesc: '위의 日 그림과 문제의 그림의 겹치지 않은 부분을 보면 숫자가 그려집니다.',
   },
   {
     id: 14,
@@ -138,12 +137,11 @@ export const questionList: Question[] = [
   },
   {
     id: 15,
-    answer: '좌상우우하',
+    answer: '우좌상하상',
     isSolved: false,
-    hint: '이름 자체가 아니라 앞 글자의 자음에 집중 해 주세요.',
+    hint: '동물들의 위치를 이어보면 방향이 나옵니다.',
     answerType: 'direction',
-    answerDesc:
-      '각 지역 이름의 앞 글자를 보면 ㄷ => 동, ㅅ => 서, ㄴ => 남, ㅂ => 북을 의미합니다. \n 왼,위,오,오,아래 방향 순서입니다.',
+    answerDesc: '동물 순서대로 각 동물의 위치를 찾아 이어주면 방향 화살표가 만들어집니다.',
   },
   {
     id: 16,

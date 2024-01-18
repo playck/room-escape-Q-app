@@ -48,6 +48,7 @@ function GridBoard({ boardTextList, gridRootNum, answer, finishIdx }: GridBoardP
 
   useEffect(() => {
     if (idx != finishIdx) return
+    if (!inputAnswer) return
 
     if (inputAnswer === answer) {
       setTimeout(() => {
