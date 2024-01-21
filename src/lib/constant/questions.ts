@@ -297,4 +297,14 @@ export const questionList: Question[] = [
     answerDesc:
       '파란 글자의 별의 위치는 방향, 별의 갯수는 카운트 수입니다. 그렇게 찾으면 이엔티이알(ENTER)이 만들어집니다.',
   },
+  {
+    id: 34,
+    answer: '우좌상좌하우상',
+    isSolved: false,
+    questionDesc: '가로수 나무 아래',
+    hint: '가운데 십자모양을 회전시켜서 두 개의 + 위치의 자음 모음을 조합해서 글자를 만들어질때 화살표 방향을 확인해주세요.',
+    answerType: 'direction',
+    answerDesc: '가운데 십자모양을 돌려서 두 개의 +를 조합하여 글자를 만들었을 때 화살표 방향을 순서대로 입력해줍니다.',
+    isInterative: true,
+  },
 ]
