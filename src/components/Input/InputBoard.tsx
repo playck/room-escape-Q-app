@@ -214,7 +214,7 @@ function InputBoard({ question }: InputBoardProps) {
           </DefaultButton>
           <DefaultButton
             style={{ backgroundColor: colors.button.purple, justifyContent: 'flex-end', paddingRight: '5px' }}
-            onClick={() => router.push(`/questions/${Number(id) + 1}`)}
+            onClick={() => router.replace(`/questions/${Number(id) + 1}`)}
           >
             <Flex alignItems="center" gap="5px">
               <Text>다음 문제 풀기</Text>
