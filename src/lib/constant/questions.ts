@@ -272,4 +272,29 @@ export const questionList: Question[] = [
     answerType: 'English',
     answerDesc: '색상의 영어 단어의 알파벳 위치를 의미합니다.',
   },
+  {
+    id: 31,
+    answer: 'AWYIT',
+    isSolved: false,
+    hint: '거울에 좌우 반전이 되어도 변함이 없을 알파벳을 찾아보세요.',
+    answerType: 'English',
+    answerDesc: '거울 속에서도 모습이 그대로인 알파벳 조합입니다.',
+  },
+  {
+    id: 32,
+    answer: '2441',
+    isSolved: false,
+    hint: '단어를 180도 회전시켜보세요.',
+    answerType: 'Number',
+    answerDesc: '단어를 좌로 180도 회전시키면 1134 + 1307 = 2441',
+  },
+  {
+    id: 33,
+    answer: 'ENTER',
+    isSolved: false,
+    hint: '파란 글자의 우측 별 갯수만큼 카운트 했을때 글자를 찾아주세요.',
+    answerType: 'English',
+    answerDesc:
+      '파란 글자의 별의 위치는 방향, 별의 갯수는 카운트 수입니다. 그렇게 찾으면 이엔티이알(ENTER)이 만들어집니다.',
+  },
 ]
