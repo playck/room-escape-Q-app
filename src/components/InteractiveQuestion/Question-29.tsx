@@ -1,4 +1,4 @@
-import { Box, Flex, Image, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, SimpleGrid } from '@chakra-ui/react'
 import { ToggleSwitch } from '../Switch'
 import { useState } from 'react'
 import _ from 'lodash'
@@ -8,16 +8,7 @@ import { InputAnswerState } from '@/atoms/input/inputAnswer'
 interface Questions29Props {}
 
 function Questions29(props: Questions29Props) {
-  const [switchList, setSwitchList] = useState<string[]>([
-    '신발장',
-    '베란다',
-    '화장실',
-    '다락방',
-    '부엌',
-    '안방',
-    '거실',
-    '창고',
-  ])
+  const [switchList] = useState<string[]>(['신발장', '베란다', '', '', '', '안방', '', '창고'])
   const setInputValue = useSetRecoilState(InputAnswerState)
 
   const onSwitchToggleBtn = (idx: number, value: string) => {

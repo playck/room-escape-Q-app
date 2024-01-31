@@ -257,7 +257,7 @@ export const questionList: Question[] = [
   {
     id: 29,
     answer: '신발장베란다안방창고',
-    interativeAnswer: '↓ ↑ ↓ ↑ ↑ ↑ ↓ ↓',
+    interativeAnswer: '↑ ↑ ↓ ↓ ↑ ↓ ↑ ↓ ↑',
     isSolved: false,
     hint: '각 장소의 칸의 화살표 그림의 위치를 확인 해 주세요.',
     answerType: 'device',

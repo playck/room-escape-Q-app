@@ -2,6 +2,7 @@ import { getFontStyle } from '@/chakra/fonts'
 import { Box, Center, Flex } from '@chakra-ui/react'
 import { useState } from 'react'
 import { FaArrowsRotate } from 'react-icons/fa6'
+import { CgArrowLongLeft } from 'react-icons/cg'
 
 interface Question34Props {}
 
@@ -100,7 +101,9 @@ function Question34(props: Question34Props) {
                 backgroundImage="radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, transparent 70.71%),
                       repeating-linear-gradient(0deg, #DEB887, #DEB887 1px, #F5DEB3 1px, #F5DEB3 3%)"
               >
-                <Box {...getFontStyle(32, 700, '24px')}>&#129044;</Box>
+                <Center>
+                  <CgArrowLongLeft size="22px" />
+                </Center>
                 <Box {...getFontStyle(20, 700, '22px')}> + </Box>
               </Flex>
             </Box>

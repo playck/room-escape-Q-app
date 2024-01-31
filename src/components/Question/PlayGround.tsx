@@ -1,7 +1,4 @@
-import { Box, Center } from '@chakra-ui/react'
-import { Flex, Grid, GridItem } from '@chakra-ui/react'
-import Clock from '../Clock/Clock'
-import { GridBoard } from '../GridBoard'
+import { Box } from '@chakra-ui/react'
 
 interface PlayGroundProps {
   styleProps?: any
