@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
-import { Box, Center, Flex, Text } from '@chakra-ui/react'
+import { Box, Center, Flex } from '@chakra-ui/react'
 import _ from 'lodash'
 import { IoIosArrowUp, IoMdArrowDropleft, IoMdArrowDropright, IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io'
 import { FcApproval } from 'react-icons/fc'
-import { getFontStyle } from '@/chakra/fonts'
+import { useRecoilState } from 'recoil'
+import { directedValueArrState } from '@/atoms/input/inputAnswer'
+
 interface DirectionLockButtonProps {
   isCorrect: boolean
   setIsCorrect: React.Dispatch<React.SetStateAction<boolean>>
@@ -20,7 +22,7 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
   const y = useMotionValue(initialY) // Y 좌표를 관리하는 변수
   const resetX = useTransform(x, [0, 1], [initialX, 0]) // X 좌표를 초기 값으로 되돌리기 위한 변환 함수
   const resetY = useTransform(y, [0, 1], [initialY, 0]) // Y 좌표를 초기 값으로 되돌리기 위한 변환 함수
-  const [directedValueArr, setDirectedValueArr] = useState<string>('') // 좌,우,상,하
+  const [directedValueArr, setDirectedValueArr] = useRecoilState(directedValueArrState) // 좌,우,상,하
 
   const handleDragEnd = () => {
     // 드래그 종료 시 마지막 좌표값 저장 및 원래 위치로 되돌리기
@@ -95,7 +97,7 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
         color="white"
         onClick={() => setDirectedValueArr('')}
       >
-        {isCorrect ? <FcApproval size={25} /> : <Text {...getFontStyle(15, 500, '20px')}>reset</Text>}
+        {isCorrect ? <FcApproval size={25} /> : <></>}
       </Box>
       <AnimatePresence>
         <Center

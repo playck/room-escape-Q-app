@@ -1,4 +1,4 @@
-import { Button, Center, Flex, HStack, PinInput, PinInputField, Text } from '@chakra-ui/react'
+import { Button, Center, Flex, HStack, PinInput, PinInputField, Text, useToast } from '@chakra-ui/react'
 import { useState, useRef, useEffect } from 'react'
 import _ from 'lodash'
 import { IoIosArrowForward } from 'react-icons/io'
@@ -8,12 +8,14 @@ import { ModalPropsState, ModalState } from '@/atoms/etc/modal'
 import { useRouter } from 'next/router'
 import { DefaultButton, DirectionLockButton } from '../Button'
 import { colors } from '@/chakra/colors'
-import { InputAnswerState, isAnswerCorrectState } from '@/atoms/input/inputAnswer'
+import { InputAnswerState, directedValueArrState, isAnswerCorrectState } from '@/atoms/input/inputAnswer'
+import { alertInputReset } from '@/lib/constant/toast'
 import AnswerModal from '../Modal/AnswerModal'
 import HintModal from '../Modal/HintModal'
 import { getFontStyle } from '@/chakra/fonts'
 import AlertModal from '../Modal/AlertModal'
 import confetti from 'canvas-confetti'
+import { BsArrowCounterclockwise } from 'react-icons/bs'
 
 interface InputBoardProps {
   question: Question
@@ -29,10 +31,12 @@ function InputBoard({ question }: InputBoardProps) {
   const [isCorrect, setIsCorrect] = useRecoilState(isAnswerCorrectState)
   const setModal = useSetRecoilState(ModalState)
   const setModalProps = useSetRecoilState(ModalPropsState)
+  const setDirectedValueArr = useSetRecoilState(directedValueArrState)
   const firstInputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
   const { id } = router.query
   const { hint, answer, isAnswerImage, answerDesc, answerType, isInterative, interativeAnswer } = question
+  const toast = useToast({ duration: 1300 })
 
   useEffect(() => {
     const type = question['answerType'] == 'Number' ? 'number' : 'alphanumeric'
@@ -79,10 +83,15 @@ function InputBoard({ question }: InputBoardProps) {
     if (firstInputRef.current && inputValue.length > 1) {
       firstInputRef.current.focus()
     }
+    if (answerType === 'direction') {
+      setDirectedValueArr('')
+      toast.closeAll()
+      toast(alertInputReset)
+    }
   }
 
   return (
-    <Flex px="50px" pb="100px" justifyContent="center" alignItems="center" direction="column">
+    <Flex px="50px" pb="50px" justifyContent="center" alignItems="center" direction="column">
       <Flex width="100%" justifyContent="center" mb="16px" gap="12px">
         <Button
           minW="80px"
@@ -120,7 +129,9 @@ function InputBoard({ question }: InputBoardProps) {
           }}
           onClick={() => !isCorrect && onResetInputValue()}
         >
-          <Text fontSize="36px">↺</Text>
+          <Center>
+            <BsArrowCounterclockwise size={32} />
+          </Center>
         </Button>
       </Flex>
       {!isInterative && answerType != 'direction' && (

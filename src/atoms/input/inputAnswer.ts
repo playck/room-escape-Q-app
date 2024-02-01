@@ -9,3 +9,8 @@ export const isAnswerCorrectState = atom<boolean>({
   key: 'isAnswerCorrectState',
   default: false,
 })
+
+export const directedValueArrState = atom<string>({
+  key: 'directedValueArrState',
+  default: '',
+})
