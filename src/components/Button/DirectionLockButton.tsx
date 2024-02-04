@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
-import { Box, Center, Flex } from '@chakra-ui/react'
+import { Box, Center, Flex, useToast } from '@chakra-ui/react'
 import _ from 'lodash'
 import { IoIosArrowUp, IoMdArrowDropleft, IoMdArrowDropright, IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io'
 import { FcApproval } from 'react-icons/fc'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { directedValueArrState } from '@/atoms/input/inputAnswer'
+import { IoIosHelpCircleOutline } from 'react-icons/io'
+import { ModalPropsState, ModalState } from '@/atoms/etc/modal'
+import DirectionLockBtnInfo from '../Modal/DirectionLockBtnInfo'
+import { alertisNotAnswer } from '@/lib/constant/toast'
 
 interface DirectionLockButtonProps {
   isCorrect: boolean
@@ -23,6 +27,9 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
   const resetX = useTransform(x, [0, 1], [initialX, 0]) // X 좌표를 초기 값으로 되돌리기 위한 변환 함수
   const resetY = useTransform(y, [0, 1], [initialY, 0]) // Y 좌표를 초기 값으로 되돌리기 위한 변환 함수
   const [directedValueArr, setDirectedValueArr] = useRecoilState(directedValueArrState) // 좌,우,상,하
+  const setModal = useSetRecoilState(ModalState)
+  const setModalProps = useSetRecoilState(ModalPropsState)
+  const toast = useToast({ duration: 1300 })
 
   const handleDragEnd = () => {
     // 드래그 종료 시 마지막 좌표값 저장 및 원래 위치로 되돌리기
@@ -61,6 +68,9 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
   const onCheckAnswer = () => {
     if (directedValueArr === answer) {
       setIsCorrect(true)
+    } else {
+      toast.closeAll()
+      toast(alertisNotAnswer)
     }
   }
 
@@ -98,6 +108,25 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
         onClick={() => setDirectedValueArr('')}
       >
         {isCorrect ? <FcApproval size={25} /> : <></>}
+      </Box>
+      <Box
+        position="absolute"
+        bottom="0px"
+        right="-50px"
+        zIndex="2"
+        cursor="pointer"
+        onClick={() => {
+          setModal({
+            isOpen: true,
+            content: <DirectionLockBtnInfo />,
+          })
+          setModalProps({
+            size: 'lg',
+            isCentered: true,
+          })
+        }}
+      >
+        <IoIosHelpCircleOutline size={27} color="white" />
       </Box>
       <AnimatePresence>
         <Center
