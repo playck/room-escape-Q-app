@@ -1,5 +1,5 @@
 import { questionList } from '@/lib/constant/questions'
-import { Center, Grid, GridItem, Text } from '@chakra-ui/react'
+import { Center, Grid, GridItem, Image, Text } from '@chakra-ui/react'
 import Link from 'next/link'
 
 interface QuestionsListProps {}
@@ -32,8 +32,10 @@ function QuestionsList(props: QuestionsListProps) {
             cursor="pointer"
             boxShadow="0px 3px 5px rgba(0, 0, 0, 0.12)"
           >
-            <Center flexDirection="column" gap={['10px', '25px']}>
-              <Text fontSize={['40px', '60px']}>🔒</Text>
+            <Center flexDirection="column" gap={['15px', '35px']}>
+              <Center width={['50px', '70px']}>
+                <Image src="/images/items/lock.png" alt="자물쇠" />
+              </Center>
               <Center fontSize={['24px', '42px']} fontWeight="500" lineHeight={['24px', '36px']}>
                 {el.id}
               </Center>

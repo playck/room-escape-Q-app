@@ -274,7 +274,7 @@ export const questionList: Question[] = [
   },
   {
     id: 31,
-    answer: 'AWYIT',
+    answer: 'AWYOT',
     isSolved: false,
     hint: '거울에 좌우 반전이 되어도 변함이 없을 알파벳을 찾아보세요.',
     answerType: 'English',

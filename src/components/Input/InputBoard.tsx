@@ -1,4 +1,4 @@
-import { Button, Center, Flex, HStack, PinInput, PinInputField, Text, useToast } from '@chakra-ui/react'
+import { Button, Center, Flex, HStack, Image, PinInput, PinInputField, Text, useToast } from '@chakra-ui/react'
 import { useState, useRef, useEffect } from 'react'
 import _ from 'lodash'
 import { IoIosArrowForward } from 'react-icons/io'
@@ -173,7 +173,7 @@ function InputBoard({ question }: InputBoardProps) {
       ) : (
         <Flex alignItems="center" mt="25px" mb="40px">
           <Button
-            p="28px"
+            p="22px"
             bg="gray.800"
             width="100px"
             height="100px"
@@ -189,7 +189,15 @@ function InputBoard({ question }: InputBoardProps) {
             }}
             onClick={() => !isCorrect && onSubmitAnswer()}
           >
-            {isCorrect ? <Text fontSize="50px">🔓️</Text> : <Text fontSize="50px">🔒</Text>}
+            {isCorrect ? (
+              <Center w={['60px', '70px']}>
+                <Image src="/images/items/unlock.png" alt="자물쇠" />
+              </Center>
+            ) : (
+              <Center w={['60px', '70px']}>
+                <Image src="/images/items/lock.png" alt="자물쇠" />
+              </Center>
+            )}
           </Button>
         </Flex>
       )}
