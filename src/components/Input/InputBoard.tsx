@@ -16,6 +16,7 @@ import { getFontStyle } from '@/chakra/fonts'
 import AlertModal from '../Modal/AlertModal'
 import confetti from 'canvas-confetti'
 import { BsArrowCounterclockwise } from 'react-icons/bs'
+import { useLocalStorage } from 'usehooks-ts'
 
 interface InputBoardProps {
   question: Question
@@ -29,6 +30,7 @@ function InputBoard({ question }: InputBoardProps) {
   const [inputValue, setInputValue] = useRecoilState(InputAnswerState)
   const [inputType, setInputType] = useState<InputType['inputType']>('alphanumeric')
   const [isCorrect, setIsCorrect] = useRecoilState(isAnswerCorrectState)
+  const [solvedList, setSolvedList] = useLocalStorage<number[]>('solvedList', [])
   const setModal = useSetRecoilState(ModalState)
   const setModalProps = useSetRecoilState(ModalPropsState)
   const setDirectedValueArr = useSetRecoilState(directedValueArrState)
@@ -59,6 +61,8 @@ function InputBoard({ question }: InputBoardProps) {
   }, [isCorrect])
 
   const onSubmitAnswer = () => {
+    if (!inputValue) return
+
     if (inputValue === answer) {
       confetti({
         particleCount: 120,
@@ -66,6 +70,9 @@ function InputBoard({ question }: InputBoardProps) {
         origin: { y: 0.8 },
       })
       setIsCorrect(true)
+      if (!solvedList.includes(Number(id))) {
+        setSolvedList([...solvedList, Number(id)])
+      }
     } else {
       setModal({
         isOpen: true,
@@ -102,7 +109,7 @@ function InputBoard({ question }: InputBoardProps) {
           width="65px"
           sx={{
             '&:hover': {
-              bg: 'gray.600',
+              bg: 'gray.800',
             },
           }}
           onClick={() =>
@@ -124,7 +131,7 @@ function InputBoard({ question }: InputBoardProps) {
           width="65px"
           sx={{
             '&:hover': {
-              bg: 'gray.600',
+              bg: 'gray.800',
             },
           }}
           onClick={() => !isCorrect && onResetInputValue()}
@@ -191,7 +198,7 @@ function InputBoard({ question }: InputBoardProps) {
           >
             {isCorrect ? (
               <Center w={['60px', '70px']}>
-                <Image src="/images/items/unlock.png" alt="자물쇠" />
+                <Image src="/images/items/unlock.png" alt="열린 자물쇠" />
               </Center>
             ) : (
               <Center w={['60px', '70px']}>
