@@ -6,6 +6,8 @@ import { useEffect } from 'react'
 import { InputAnswerState, isAnswerCorrectState } from '@/atoms/input/inputAnswer'
 import { ModalPropsState, ModalState } from '@/atoms/etc/modal'
 import AlertModal from '../Modal/AlertModal'
+import { useRouter } from 'next/router'
+import { useLocalStorage } from 'usehooks-ts'
 
 interface GridBoardProps {
   boardTextList: string[]
@@ -22,6 +24,9 @@ function GridBoard({ boardTextList, gridRootNum, answer, finishIdx }: GridBoardP
   const setIsAnswerCorrect = useSetRecoilState(isAnswerCorrectState)
   const setModal = useSetRecoilState(ModalState)
   const setModalProps = useSetRecoilState(ModalPropsState)
+  const [solvedList, setSolvedList] = useLocalStorage<number[]>('solvedList', [])
+  const router = useRouter()
+  const { id } = router.query
 
   useEffect(() => {
     setGridArray(Array.from({ length: gridRootNum * gridRootNum }, () => ''))
@@ -53,6 +58,9 @@ function GridBoard({ boardTextList, gridRootNum, answer, finishIdx }: GridBoardP
     if (inputAnswer === answer) {
       setTimeout(() => {
         setIsAnswerCorrect(true)
+        if (!solvedList.includes(Number(id))) {
+          setSolvedList([...solvedList, Number(id)])
+        }
       }, 500)
     } else {
       setTimeout(() => {

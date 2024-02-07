@@ -1,12 +1,15 @@
 import { questionList } from '@/lib/constant/questions'
 import { Center, Grid, GridItem, Image } from '@chakra-ui/react'
 import Link from 'next/link'
-import { useReadLocalStorage } from 'usehooks-ts'
+import { useReadLocalStorage, useIsClient } from 'usehooks-ts'
 
 interface QuestionsListProps {}
 
 function QuestionsList(props: QuestionsListProps) {
   const solvedList = useReadLocalStorage<number[]>('solvedList')
+  const isClient = useIsClient()
+
+  if (!isClient) return <></>
 
   return (
     <Grid

@@ -10,6 +10,8 @@ import { IoIosHelpCircleOutline } from 'react-icons/io'
 import { ModalPropsState, ModalState } from '@/atoms/etc/modal'
 import DirectionLockBtnInfo from '../Modal/DirectionLockBtnInfo'
 import { alertisNotAnswer } from '@/lib/constant/toast'
+import { useLocalStorage } from 'usehooks-ts'
+import { useRouter } from 'next/router'
 
 interface DirectionLockButtonProps {
   isCorrect: boolean
@@ -29,7 +31,10 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
   const [directedValueArr, setDirectedValueArr] = useRecoilState(directedValueArrState) // 좌,우,상,하
   const setModal = useSetRecoilState(ModalState)
   const setModalProps = useSetRecoilState(ModalPropsState)
+  const [solvedList, setSolvedList] = useLocalStorage<number[]>('solvedList', [])
   const toast = useToast({ duration: 1300 })
+  const router = useRouter()
+  const { id } = router.query
 
   const handleDragEnd = () => {
     // 드래그 종료 시 마지막 좌표값 저장 및 원래 위치로 되돌리기
@@ -68,6 +73,9 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
   const onCheckAnswer = () => {
     if (directedValueArr === answer) {
       setIsCorrect(true)
+      if (!solvedList.includes(Number(id))) {
+        setSolvedList([...solvedList, Number(id)])
+      }
     } else {
       toast.closeAll()
       toast(alertisNotAnswer)
