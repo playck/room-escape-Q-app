@@ -141,7 +141,7 @@ function InputBoard({ question }: InputBoardProps) {
           </Center>
         </Button>
       </Flex>
-      {!isInterative && answerType != 'direction' && (
+      {(answerType === 'Number' || answerType === 'English') && (
         <Center minW="120px" position="relative" bg="#FFF" p="20px" pt="35px" borderRadius="10px">
           <HStack gap="0.8rem" pointerEvents={isCorrect ? 'none' : 'auto'}>
             <PinInput
