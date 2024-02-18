@@ -7,6 +7,8 @@ import { NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
 import { RecoilRoot, RecoilEnv } from 'recoil'
 import ModalFrame from '@/components/Modal/ModalFrame'
+import { Ga4Script } from '@/components/Script'
+import { Header } from '@/components/Header'
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
 
@@ -24,10 +26,12 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <RecoilRoot>
       <ChakraProvider theme={theme}>
+        <Header />
         <Layout>
           <Component {...pageProps} />
         </Layout>
         <ModalFrame />
+        <Ga4Script />
       </ChakraProvider>
     </RecoilRoot>
   )
