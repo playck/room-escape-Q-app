@@ -31,6 +31,7 @@ function InputBoard({ question }: InputBoardProps) {
   const [inputType, setInputType] = useState<InputType['inputType']>('alphanumeric')
   const [isCorrect, setIsCorrect] = useRecoilState(isAnswerCorrectState)
   const [solvedList, setSolvedList] = useLocalStorage<number[]>('solvedList', [])
+  const [usedHintList, setUsedHintList] = useLocalStorage<number[]>('useHintList', [])
   const setModal = useSetRecoilState(ModalState)
   const setModalProps = useSetRecoilState(ModalPropsState)
   const setDirectedValueArr = useSetRecoilState(directedValueArrState)
@@ -85,6 +86,18 @@ function InputBoard({ question }: InputBoardProps) {
     }
   }
 
+  const onOpenHint = () => {
+    if (!isCorrect) {
+      setModal({
+        isOpen: true,
+        content: <HintModal hint={hint} answer={answer} interativeAnswer={interativeAnswer} />,
+      })
+    }
+    if (!usedHintList.includes(Number(id))) {
+      setUsedHintList([...usedHintList, Number(id)])
+    }
+  }
+
   const onResetInputValue = () => {
     setInputValue('')
     if (firstInputRef.current && inputValue.length > 1) {
@@ -112,13 +125,7 @@ function InputBoard({ question }: InputBoardProps) {
               bg: 'gray.800',
             },
           }}
-          onClick={() =>
-            !isCorrect &&
-            setModal({
-              isOpen: true,
-              content: <HintModal hint={hint} answer={answer} interativeAnswer={interativeAnswer} />,
-            })
-          }
+          onClick={() => onOpenHint()}
         >
           <Text fontSize="36px">💡</Text>
         </Button>
