@@ -2,49 +2,15 @@ import { InputBoard } from '@/components/Input'
 import { QuestionSection } from '@/components/Question'
 import { Question, questionList } from '@/lib/constant/questions'
 import { Flex } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
 import _ from 'lodash'
+import { getFilterdQuestion } from '../../../service/questions'
+import { GetStaticProps } from 'next'
 
-interface QuestionProps {}
+interface QuestionProps {
+  question: Question
+}
 
-function Question(props: QuestionProps) {
-  const router = useRouter()
-  const { id } = router.query
-
-  const [question, setQuestion] = useState<Question>({
-    id: 0,
-    questionImage: '',
-    questionDesc: '',
-    answer: '',
-    isSolved: false,
-    isHintIcon: '',
-    answerType: '',
-    hint: '',
-    isAnswerImage: false,
-    answerDesc: '',
-  })
-
-  useEffect(() => {
-    const currQuestion = questionList.filter((q) => String(q.id) == (id as string))[0]
-    setQuestion(currQuestion)
-
-    return () => {
-      setQuestion({
-        id: 0,
-        questionImage: '',
-        questionDesc: '',
-        answer: '',
-        isSolved: false,
-        isHintIcon: '',
-        answerType: '',
-        hint: '',
-        isAnswerImage: false,
-        answerDesc: '',
-      })
-    }
-  }, [id])
-
+function Question({ question }: QuestionProps) {
   if (question == undefined) return <></>
 
   return (
@@ -64,6 +30,25 @@ function Question(props: QuestionProps) {
   )
 }
 
-export default Question
+export async function getStaticPaths() {
+  const paths = questionList.map((q) => ({
+    params: {
+      id: q.id.toString(),
+    },
+  }))
 
-// bg="#fff8dc" 노란 배경
+  return { paths, fallback: false }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const id = params?.id as string
+  const question = getFilterdQuestion(id)
+
+  return {
+    props: {
+      question: question,
+    },
+  }
+}
+
+export default Question
