@@ -8,7 +8,7 @@ interface LayoutProps {
 
 function Layout({ children }: LayoutProps) {
   return (
-    <Box position="relative" maxW="800px" margin="0 auto">
+    <Box position="relative" maxW="650px" margin="0 auto">
       <Box
         as="nav"
         position="absolute"
@@ -16,7 +16,7 @@ function Layout({ children }: LayoutProps) {
         left={0}
         right={0}
         zIndex={100}
-        maxW="800px"
+        maxW="650px"
         width="100%"
         margin="0 auto"
       >

@@ -15,7 +15,7 @@ function NavBar(props: NavBarProps) {
       top="0"
       left="50%"
       transform="translateX(-50%)"
-      maxW="800px"
+      maxW="650px"
       width="100%"
       bg={pathname === '/' ? 'transparent' : 'white'}
       height="54px"

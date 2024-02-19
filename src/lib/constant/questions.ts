@@ -16,11 +16,11 @@ export interface Question {
 export const questionList: Question[] = [
   {
     id: 1,
-    answer: '5',
+    answer: '2441',
     isSolved: false,
-    hint: '더한 숫자 값의 영어 단어를 확인해주세요.',
+    hint: '단어를 180도 회전시켜보세요.',
     answerType: 'Number',
-    answerDesc: '더한 숫자 값의 영어 스펠링 갯수입니다.',
+    answerDesc: '단어를 좌로 180도 회전시키면 1134 + 1307 = 2441',
   },
   {
     id: 2,
@@ -283,11 +283,12 @@ export const questionList: Question[] = [
   },
   {
     id: 32,
-    answer: '2441',
+    answer: 'FIVE',
     isSolved: false,
-    hint: '단어를 180도 회전시켜보세요.',
-    answerType: 'Number',
-    answerDesc: '단어를 좌로 180도 회전시키면 1134 + 1307 = 2441',
+    hint: '거울로 비추어 본듯이 좌우 반전해서 읽어주세요.',
+    answerType: 'English',
+    answerDesc:
+      '글자가 좌우반전 되어 나열되어 있습니다. 다시 좌우반전해서 자음 + 모음을 붙여 읽어보면 파이브(FIVE)가 만들어집니다.',
   },
   {
     id: 33,
