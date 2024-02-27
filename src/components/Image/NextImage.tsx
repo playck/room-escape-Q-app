@@ -6,7 +6,7 @@ interface NextImageProps {
   w: any
   h: any
   fill?: boolean
-  placeholder?: string
+  placeholder?: any
   priority?: boolean
   style?: any
 }
@@ -17,7 +17,7 @@ function NextImage({
   w = '100%',
   h = '100%',
   fill = false,
-  //   placeholder = 'blur',
+  placeholder = 'blur',
   priority = true,
   style = {},
 }: NextImageProps) {
@@ -29,8 +29,8 @@ function NextImage({
       height={h}
       fill={fill}
       style={{ objectFit: 'cover', ...style }}
-      // placeholder={placeholder}
-      // blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+      placeholder={placeholder}
+      blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
       priority={priority}
     />
   )
