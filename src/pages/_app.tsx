@@ -4,11 +4,12 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from '@/chakra/theme'
 import { Layout } from '@/components/Layout'
 import { NextPage } from 'next'
-import { ReactElement, ReactNode } from 'react'
+import { ReactElement, ReactNode, useEffect } from 'react'
 import { RecoilRoot, RecoilEnv } from 'recoil'
 import ModalFrame from '@/components/Modal/ModalFrame'
-import { Ga4Script } from '@/components/Script'
 import { Header } from '@/components/Header'
+import { initGA, trackingPageView } from '@/lib/script/ga'
+import { useRouter } from 'next/router'
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
 
@@ -22,6 +23,17 @@ type AppPropsWithLayout = AppProps & {
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   // const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>)
+  const router = useRouter()
+
+  initGA()
+
+  useEffect(() => {
+    if (router?.query.dev === 'true') {
+      return
+    } else {
+      trackingPageView()
+    }
+  }, [router.pathname])
 
   return (
     <RecoilRoot>
@@ -31,7 +43,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           <Component {...pageProps} />
         </Layout>
         <ModalFrame />
-        <Ga4Script />
       </ChakraProvider>
     </RecoilRoot>
   )

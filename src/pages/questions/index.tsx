@@ -1,6 +1,7 @@
 import { questionList } from '@/lib/constant/questions'
 import { Center, Grid, GridItem, Image } from '@chakra-ui/react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useReadLocalStorage, useIsClient } from 'usehooks-ts'
 
 interface QuestionsListProps {}
@@ -8,11 +9,13 @@ interface QuestionsListProps {}
 function QuestionsList(props: QuestionsListProps) {
   const solvedList = useReadLocalStorage<number[]>('solvedList')
   const isClient = useIsClient()
+  const router = useRouter()
 
   if (!isClient) return <></>
 
   return (
     <Grid
+      as="ul"
       templateColumns="repeat(3, 1fr)"
       gap={6}
       p="30px 20px"
@@ -24,8 +27,9 @@ function QuestionsList(props: QuestionsListProps) {
       }}
     >
       {questionList.map((el) => (
-        <Link key={el.id} href={`questions/${el.id}`}>
+        <Link key={el.id} href={`questions/${el.id}${router?.query.dev == 'true' ? '?dev=true' : ''}`}>
           <GridItem
+            as="li"
             key={el.id}
             display="flex"
             flex="1 1 0"

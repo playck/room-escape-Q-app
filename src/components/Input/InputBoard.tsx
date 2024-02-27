@@ -17,6 +17,7 @@ import AlertModal from '../Modal/AlertModal'
 import confetti from 'canvas-confetti'
 import { BsArrowCounterclockwise } from 'react-icons/bs'
 import { useLocalStorage } from 'usehooks-ts'
+import { trackingEvent } from '@/lib/script/ga'
 
 interface InputBoardProps {
   question: Question
@@ -94,6 +95,9 @@ function InputBoard({ question }: InputBoardProps) {
       })
     }
     if (!usedHintList.includes(Number(id))) {
+      if (router?.query.dev != 'true') {
+        trackingEvent('hintClick', 'click')
+      }
       setUsedHintList([...usedHintList, Number(id)])
     }
   }
@@ -111,9 +115,10 @@ function InputBoard({ question }: InputBoardProps) {
   }
 
   return (
-    <Flex px="50px" pb="50px" justifyContent="center" alignItems="center" direction="column">
+    <Flex as="section" px="50px" pb="50px" justifyContent="center" alignItems="center" direction="column">
       <Flex width="100%" justifyContent="center" mb="16px" gap="12px">
         <Button
+          aria-label="Hint-button"
           minW="80px"
           bg="gray.800"
           color="white"
@@ -130,6 +135,7 @@ function InputBoard({ question }: InputBoardProps) {
           <Text fontSize="36px">💡</Text>
         </Button>
         <Button
+          aria-label="Reset-button"
           minW="80px"
           bg="gray.800"
           color="white"
