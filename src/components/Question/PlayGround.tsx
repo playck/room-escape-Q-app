@@ -7,7 +7,7 @@ interface PlayGroundProps {
 
 function PlayGround({ styleProps, children }: PlayGroundProps) {
   return (
-    <Box p="16px" bg="gray.100" width="90%" borderRadius="10px" {...styleProps}>
+    <Box p="16px" bg="gray.100" width="90%" borderRadius="10px" overflow="hidden" {...styleProps}>
       {children}
     </Box>
   )

@@ -4,9 +4,7 @@ export interface Question {
   questionDesc?: string
   answer: string
   interativeAnswer?: string
-  isSolved: boolean
   isInterative?: boolean
-  isHintIcon?: string
   answerType: string
   hint: string
   isAnswerImage?: boolean
@@ -17,7 +15,6 @@ export const questionList: Question[] = [
   {
     id: 1,
     answer: '2441',
-    isSolved: false,
     hint: '단어를 180도 회전시켜보세요.',
     answerType: 'Number',
     answerDesc: '단어를 좌로 180도 회전시키면 1134 + 1307 = 2441',
@@ -25,7 +22,6 @@ export const questionList: Question[] = [
   {
     id: 2,
     answer: '3235',
-    isSolved: false,
     isAnswerImage: true,
     hint: '세로로 줄을 그어보면 숫자를 만들 수 있을 것 같습니다.',
     answerType: 'Number',
@@ -34,7 +30,6 @@ export const questionList: Question[] = [
   {
     id: 3,
     answer: 'HELP',
-    isSolved: false,
     hint: '화살표 방향대로 계속 선을 이어보세요.',
     answerType: 'English',
     answerDesc: '화살표 방향대로 선을 그려보면 한 줄에 하나의 알파벳이 나옵니다.',
@@ -42,7 +37,6 @@ export const questionList: Question[] = [
   {
     id: 4,
     answer: '9612',
-    isSolved: false,
     hint: '시계라고 생각해보고 이어봅니다.',
     answerType: 'Number',
     answerDesc: '시계에서 화살표대로 차례차례 조합하면 됩니다.',
@@ -50,7 +44,6 @@ export const questionList: Question[] = [
   {
     id: 5,
     answer: '242',
-    isSolved: false,
     questionDesc:
       '밤이 서서히 지나가던 중\n모두가 사실을 알게 되었다\n시끄러움이 점점 몰려오고\n이 곳에서 나는 영원히 도망치기로 했다',
     hint: '네번째 문장의 7번째 글자를 확인해주세요. (공백 제외)',
@@ -61,7 +54,6 @@ export const questionList: Question[] = [
   {
     id: 6,
     answer: '8409',
-    isSolved: false,
     questionDesc: '패스워드를 입력하시오',
     hint: '패는 팔(8)을 뜻하는 것 같습니다.',
     answerType: 'Number',
@@ -70,7 +62,6 @@ export const questionList: Question[] = [
   {
     id: 7,
     answer: '좌상우우하',
-    isSolved: false,
     hint: '이름 자체가 아니라 앞 글자의 자음에 집중 해 주세요.',
     answerType: 'direction',
     answerDesc:
@@ -79,8 +70,6 @@ export const questionList: Question[] = [
   {
     id: 8,
     answer: '12',
-    isSolved: false,
-    isHintIcon: '시계',
     hint: '시계에서 저 방향은 어디를 가리키는 걸까요?',
     answerType: 'Number',
     answerDesc: '시계에서 화살표가 가리키는 방향, 즉 시계 숫자를 의미합니다.',
@@ -88,7 +77,6 @@ export const questionList: Question[] = [
   {
     id: 9,
     answer: '1320',
-    isSolved: false,
     hint: '첫째자리와 넷째자리의 숫자를 곱한 값을 다음 숫자에서 찾아주세요.',
     answerType: 'Number',
     answerDesc:
@@ -97,7 +85,6 @@ export const questionList: Question[] = [
   {
     id: 10,
     answer: 'TIRE',
-    isSolved: false,
     hint: '숫자 영단어와 위치',
     answerType: 'English',
     answerDesc:
@@ -106,7 +93,6 @@ export const questionList: Question[] = [
   {
     id: 11,
     answer: '0013',
-    isSolved: false,
     hint: '가로 라인을 찾아주세여',
     answerType: 'Number',
     answerDesc: '각 단어 알파벳의 가로 막대기 갯수를 의미합니다.',
@@ -114,7 +100,6 @@ export const questionList: Question[] = [
   {
     id: 12,
     answer: 'JTWN',
-    isSolved: false,
     hint: '행 과 열의 위치를 가리키고 있습니다.',
     answerType: 'English',
     answerDesc: '3/4 => 네번째 줄의 세번째 칸을 의미합니다.',
@@ -122,7 +107,6 @@ export const questionList: Question[] = [
   {
     id: 13,
     answer: '2497',
-    isSolved: false,
     hint: '위의 그림에서 빠진 선들을 찾아 주세요',
     answerType: 'Number',
     answerDesc: '위의 日 그림과 문제의 그림의 겹치지 않은 부분을 보면 숫자가 그려집니다.',
@@ -130,7 +114,6 @@ export const questionList: Question[] = [
   {
     id: 14,
     answer: '812',
-    isSolved: false,
     hint: '선 아래의 단어들이 무언가 조금씩 빠져 있는 듯 합니다.',
     answerType: 'Number',
     answerDesc: '아래부분의 각 단어의 빠진 알파벳들을 조합하면 숫자 단어를 만들 수 있습니다.',
@@ -138,7 +121,6 @@ export const questionList: Question[] = [
   {
     id: 15,
     answer: '우좌상하상',
-    isSolved: false,
     hint: '동물들의 위치를 이어보면 방향이 나옵니다.',
     answerType: 'direction',
     answerDesc: '동물 순서대로 각 동물의 위치를 찾아 이어주면 방향 화살표가 만들어집니다.',
@@ -146,7 +128,6 @@ export const questionList: Question[] = [
   {
     id: 16,
     answer: 'CHAIR',
-    isSolved: false,
     hint: '각각의 이미지의 영어 단어를 빼고 더해주세요. 세 번째 이미지는 HAIR 입니다.',
     answerType: 'English',
     answerDesc: 'CLOCK - LOCK + HAIR',
@@ -154,7 +135,6 @@ export const questionList: Question[] = [
   {
     id: 17,
     answer: '639',
-    isSolved: false,
     hint: 'E A S T를 순서대로 찾아주세요.',
     questionDesc: '동쪽으로',
     answerType: 'Number',
@@ -163,7 +143,6 @@ export const questionList: Question[] = [
   {
     id: 18,
     answer: '8274',
-    isSolved: false,
     hint: '빨간 알파벳의 위치를 확인해 주세요.',
     answerType: 'Number',
     answerDesc: '단어의 빨간색 부분의 위치를 숫자에서 찾아줍니다.',
@@ -172,7 +151,6 @@ export const questionList: Question[] = [
     id: 19,
     answer: 'true',
     interativeAnswer: '8:10 또는 2:40',
-    isSolved: false,
     hint: '더했을 때 , 곱했을 때의 시간은 무엇일까요?',
     answerType: 'device',
     answerDesc: '시계 바늘의 위치가 2 와 8에 있다면 2+8=10 , 2x8=16입니다.',
@@ -181,7 +159,6 @@ export const questionList: Question[] = [
   {
     id: 20,
     answer: 'SAVE',
-    isSolved: false,
     questionDesc: 'N',
     hint: '문양마다 좌우 반전이 되있는 것 같습니다.',
     answerType: 'English',
@@ -190,7 +167,6 @@ export const questionList: Question[] = [
   {
     id: 21,
     answer: 'TKTH',
-    isSolved: false,
     hint: '단어가 아니라 문장일 수도 있습니다.',
     answerType: 'English',
     answerDesc: 'D is H  F is H ... 단어가 아닌 문장입니다.',
@@ -198,7 +174,6 @@ export const questionList: Question[] = [
   {
     id: 22,
     answer: '2905',
-    isSolved: false,
     hint: '9개의 판에서 특정 칸 특정 숫자를 찾아주세요.',
     answerType: 'Number',
     answerDesc: '9개의 판의 각각의 모양에서 점의 갯수가 동일하게 마킹된 숫자의 조합입니다.',
@@ -206,7 +181,6 @@ export const questionList: Question[] = [
   {
     id: 23,
     answer: 'MOBILE',
-    isSolved: false,
     hint: '영어 단어의 특정 부분을 의미하는 것 같습니다.',
     answerType: 'English',
     answerDesc: 'MONEY 5자의 2개, BIRD 4자의 2개, LEMON 5자의 2개를 합친 답입니다.',
@@ -214,7 +188,6 @@ export const questionList: Question[] = [
   {
     id: 24,
     answer: 'SIX',
-    isSolved: false,
     hint: '단어의 알파벳 갯수를 확인 해 주세요.',
     answerType: 'English',
     answerDesc: '아래 블럭의 알파벳 수를 의미합니다.',
@@ -222,7 +195,6 @@ export const questionList: Question[] = [
   {
     id: 25,
     answer: 'JASON',
-    isSolved: false,
     hint: 'AFRIL + MAY',
     answerType: 'English',
     answerDesc: '숫자는 1월, 2월 ... 달(月)을 의미하구 해당 월의 영어 단어의 첫글자의 조합입니다.',
@@ -231,7 +203,6 @@ export const questionList: Question[] = [
     id: 26,
     answer: '',
     interativeAnswer: 'START - R - D - D - R - FINSHI',
-    isSolved: false,
     hint: 'UP, DOWN',
     questionDesc: '올바른 방향대로',
     answerType: 'device',
@@ -241,7 +212,6 @@ export const questionList: Question[] = [
   {
     id: 27,
     answer: '324',
-    isSolved: false,
     hint: '0의 갯수를 세어주세요.',
     answerType: 'Number',
     answerDesc: '0의 갯수를 뜻합니다.',
@@ -249,7 +219,6 @@ export const questionList: Question[] = [
   {
     id: 28,
     answer: '3112',
-    isSolved: false,
     hint: '달력을 생각해주세요.',
     answerType: 'Number',
     answerDesc: '칸마다 달력 날짜의 마지막 날짜 월이 작성되어 있습니다.',
@@ -258,7 +227,6 @@ export const questionList: Question[] = [
     id: 29,
     answer: '신발장베란다안방창고',
     interativeAnswer: '↑ ↑ ↓ ↓ ↑ ↓ ↑ ↓ ↑',
-    isSolved: false,
     hint: '각 장소의 칸의 화살표 그림의 위치를 확인 해 주세요.',
     answerType: 'device',
     answerDesc: '각 장소의 칸의 화살표 위치대로 스위치 버튼을 바꿔줍니다.',
@@ -267,7 +235,6 @@ export const questionList: Question[] = [
   {
     id: 30,
     answer: 'PHONE',
-    isSolved: false,
     hint: '색깔의 영어단어와 위치',
     answerType: 'English',
     answerDesc: '색상의 영어 단어의 알파벳 위치를 의미합니다.',
@@ -275,16 +242,14 @@ export const questionList: Question[] = [
   {
     id: 31,
     answer: 'AWYOT',
-    isSolved: false,
     hint: '거울에 좌우 반전이 되어도 변함이 없을 알파벳을 찾아보세요.',
-    questionDesc: '올바르게 쓰여진 알파벳을 찾으시오',
+    questionDesc: '올바른 알파벳',
     answerType: 'English',
     answerDesc: '거울 속에서도 모습이 그대로인 알파벳 조합입니다.',
   },
   {
     id: 32,
     answer: 'FIVE',
-    isSolved: false,
     hint: '거울로 비추어 본듯이 좌우 반전해서 읽어주세요.',
     answerType: 'English',
     answerDesc:
@@ -293,7 +258,6 @@ export const questionList: Question[] = [
   {
     id: 33,
     answer: 'ENTER',
-    isSolved: false,
     hint: '파란 글자의 우측 별 갯수만큼 카운트 했을때 글자를 찾아주세요.',
     answerType: 'English',
     answerDesc:
@@ -302,7 +266,6 @@ export const questionList: Question[] = [
   {
     id: 34,
     answer: '우좌상좌하우상',
-    isSolved: false,
     questionDesc: '가로수 나무 아래',
     hint: '가운데 십자모양을 회전시켜서 두 개의 + 위치의 자음 모음을 조합해서 글자를 만들어질때 화살표 방향을 확인해주세요.',
     answerType: 'direction',
@@ -312,7 +275,6 @@ export const questionList: Question[] = [
   {
     id: 35,
     answer: 'STEAK',
-    isSolved: false,
     hint: '네 번째 칸에 4는 영어 단어의 네 번째 위치의 네 번째 알파벳입니다. 이렇게 조합하면 LUNCH입니다.',
     answerType: 'English',
     answerDesc:
@@ -321,7 +283,6 @@ export const questionList: Question[] = [
   {
     id: 36,
     answer: '1723',
-    isSolved: false,
     hint: '첫번째 일기와 세번째 일기의 내용을 유심히 확인해주세요.',
     answerType: 'Number',
     answerDesc:
@@ -331,7 +292,6 @@ export const questionList: Question[] = [
   {
     id: 37,
     answer: '2016',
-    isSolved: false,
     hint: '디지털 숫자의 흰색 선이 없는 부분으로 계산해보세요.',
     answerType: 'Number',
     answerDesc: '디지털 숫자의 흰색 선을 지우고 없는 부분을 그려서 계산하면 올바른 식이 됩니다.',
@@ -339,7 +299,6 @@ export const questionList: Question[] = [
   {
     id: 38,
     answer: '9105',
-    isSolved: false,
     hint: '해당되는 글자의 도형은 이동할 글자 칸 수이고 화살표 방향대로 찾아가보세요.',
     answerType: 'Number',
     answerDesc:
@@ -348,7 +307,6 @@ export const questionList: Question[] = [
   {
     id: 39,
     answer: 'HOUSE',
-    isSolved: false,
     hint: '위의 첫번째 막대기와 두번째 막대기에 아래의 첫번째 가로 막대기를 넣어주면 H가 만들어집니다.',
     answerType: 'English',
     answerDesc: '위의 세로 막대기 사이에 아래 가로 막대기를 넣어주면 H O U S E 글자가 나옵니다.',
@@ -356,10 +314,51 @@ export const questionList: Question[] = [
   {
     id: 40,
     answer: 'POWER',
-    isSolved: false,
     hint: '키보드에서 해당 키의 위치를 찾아 주세요.',
     answerType: 'English',
     answerDesc:
       '첫번째 T -> 4 의 뜻은 키보드에서 T에서 오른쪽으로 4칸 이동했을때의 키보드 키에 쓰여진 글자를 의미합니다.',
+  },
+  {
+    id: 41,
+    answer: '2722',
+    hint: '기억상실 => 단어의 받침을 모아보면 ㄱ ㅇ ㄹ , 숫자와 비슷한 모양으로 7 0 2 입니다.',
+    answerType: 'Number',
+    answerDesc: '기억상실 단어의 받침들은 ㄱ ㅇ ㄹ, 숫자로 702 입니다. 따라서 닭과달걀은 ㄺ ㄹ ㄹ, 2722가 됩니다.',
+  },
+  {
+    id: 42,
+    answer: '3194',
+    hint: '밑의 방의 배치도에 따라 방이름 블럭을 배치해보고 배치된 칸의 색깔을 확인해주세요.',
+    answerType: 'Number',
+    answerDesc:
+      '101호의 방의 배치도에 따라 블럭을 배치했을때, 배치된 칸의 테두리 색깔과 블럭 이름의 자음,모음의 색깔과 일치하는 자음,모음만을 조합하면 삼이 됩니다.',
+    isInterative: true,
+  },
+  {
+    id: 43,
+    answer: '10912',
+    hint: '2:00 ~ 4:00 시간 범위에 따라 보면 E T N, 이를 이용해 숫자단어를 만들어 보세요.',
+    questionDesc: ' 2:00 ~ 4:00 \n 4:00 ~ 7:00 \n 9:00 ~ 11:00 \n 11::00 ~ 01:00',
+    answerType: 'Number',
+    answerDesc:
+      '2:00 ~ 4:00 시간 범위에 따라 보면 E T N , 이를 조합하면 TEN(10)을 만들수 있습니다. 다른 시간대도 동일한 방법을 사용해서 숫자단어를 조합해내면 됩니다.',
+  },
+  {
+    id: 44,
+    answer: '상우좌하',
+    hint: '0 2 3 2 0은 각각 세로 라인의 색이 채워진 칸 수를 의미합니다. 세로로 된 0 0 1 3 5도 동일합니다. 그리드 판을 채워보세요.',
+    answerType: 'direction',
+    answerDesc:
+      '0 2 3 2 0은 각각 세로 라인의 색이 채워진 칸 수 / 세로로 된 0 0 1 3 5은 가로 라인의 색이 채워진 칸수 이를 찾으면 삼각형 화살표 모양이 만들어집니다. 가운데의 화살표 방향대로 방향을 입력하면 됩니다. ',
+    isInterative: true,
+  },
+  {
+    id: 45,
+    answer: 'LION',
+    hint: '각각 동물들의 선을 이어 보세요.',
+    answerType: 'English',
+    isAnswerImage: true,
+    answerDesc: '',
   },
 ]

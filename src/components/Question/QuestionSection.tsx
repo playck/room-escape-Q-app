@@ -8,7 +8,7 @@ interface QuestionSectionProps {
 }
 
 function QuestionSection({ question }: QuestionSectionProps) {
-  const { id, isInterative, questionDesc, answer, isHintIcon } = question
+  const { id, isInterative, questionDesc, answer } = question
 
   return (
     <Flex

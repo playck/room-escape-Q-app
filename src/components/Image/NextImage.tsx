@@ -28,7 +28,7 @@ function NextImage({
       width={w}
       height={h}
       fill={fill}
-      style={{ objectFit: 'cover', ...style }}
+      style={{ borderRadius: '8px', objectFit: 'cover', ...style }}
       placeholder={placeholder}
       blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
       priority={priority}
