@@ -62,7 +62,7 @@ function GridBoard({ boardTextList, gridRootNum, answer, finishIdx }: GridBoardP
           setSolvedList([...solvedList, Number(id)])
         }
       }, 500)
-    } else {
+    } else if (answer !== '') {
       setTimeout(() => {
         setModal({
           isOpen: true,

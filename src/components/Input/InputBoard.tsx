@@ -96,7 +96,7 @@ function InputBoard({ question }: InputBoardProps) {
     }
     if (!usedHintList.includes(Number(id))) {
       if (router?.query.dev != 'true') {
-        trackingEvent('hintClick', 'click')
+        trackingEvent('hint', 'HintOpen')
       }
       setUsedHintList([...usedHintList, Number(id)])
     }

@@ -107,7 +107,7 @@ function Question42(props: Question42Props) {
               <Text as="span" top="-14px">
                 ㅈ
               </Text>
-              <Text as="span" top="-14px" left="11px">
+              <Text as="span" top="-14px" left="11px" color="#A74982">
                 ㅐ
               </Text>
             </Box>
@@ -139,7 +139,7 @@ function Question42(props: Question42Props) {
               <Text as="span" top="-3px" left="-16px" color="#32A76F">
                 ㅁ
               </Text>
-              <Text as="span" top="-18px" left="0px">
+              <Text as="span" top="-18px" left="0px" color="#A74982">
                 ㅅ
               </Text>
               <Text as="span" top="-18px" left="10px">
@@ -176,7 +176,7 @@ function Question42(props: Question42Props) {
               <Text as="span" top="-17px" left="-13px">
                 ㅏ
               </Text>
-              <Text as="span" top="-3px" left="-16px" color="#A74982">
+              <Text as="span" top="-3px" left="-16px" color="#0000FF">
                 ㅇ
               </Text>
               <Text as="span" top="-17px" left="5px">
