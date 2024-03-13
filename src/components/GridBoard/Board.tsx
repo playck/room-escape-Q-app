@@ -19,7 +19,7 @@ function Board({ id, val, boardTextList }: BoardProps) {
       minH="50px"
       height="100%"
       border="1px solid black"
-      bg={val ? 'lightgray' : '#FFF'}
+      bg={val ? 'black' : '#FFF'}
       cursor="pointer"
       fontWeight="500"
       fontSize={['16px', '24px', '32px']}
@@ -27,7 +27,7 @@ function Board({ id, val, boardTextList }: BoardProps) {
       color={val ? '#FFF' : '#191919'}
       onClick={() => setActiveBoardIdx(String(id))}
     >
-      <Text>{boardTextList[id - 1]}</Text>
+      <Text as="span">{boardTextList[id - 1]}</Text>
     </Center>
   )
 }

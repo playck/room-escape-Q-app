@@ -7,6 +7,7 @@ import {
   Question36,
   Question42,
   Question44,
+  Question50,
 } from '@/components/InteractiveQuestion'
 
 export const switchInteractiveQuestion = (id: number) => {
@@ -27,6 +28,8 @@ export const switchInteractiveQuestion = (id: number) => {
       return <Question42 />
     case 44:
       return <Question44 />
+    case 50:
+      return <Question50 />
     default:
       return null
   }

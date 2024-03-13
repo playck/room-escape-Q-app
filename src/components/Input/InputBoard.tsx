@@ -251,15 +251,19 @@ function InputBoard({ question }: InputBoardProps) {
               </Center>
             </Flex>
           </DefaultButton>
-          <DefaultButton
-            style={{ backgroundColor: colors.button.purple, justifyContent: 'flex-end', paddingRight: '5px' }}
-            onClick={() => router.replace(`/questions/${Number(id) + 1}`)}
-          >
-            <Flex alignItems="center" gap="5px">
-              <Text>다음 문제 풀기</Text>
-              <IoIosArrowForward size={28} />
-            </Flex>
-          </DefaultButton>
+          {id == '50' ? (
+            <></>
+          ) : (
+            <DefaultButton
+              style={{ backgroundColor: colors.button.purple, justifyContent: 'flex-end', paddingRight: '5px' }}
+              onClick={() => router.replace(`/questions/${Number(id) + 1}`)}
+            >
+              <Flex alignItems="center" gap="5px">
+                <Text>다음 문제 풀기</Text>
+                <IoIosArrowForward size={28} />
+              </Flex>
+            </DefaultButton>
+          )}
         </Flex>
       ) : (
         <></>

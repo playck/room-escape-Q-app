@@ -69,10 +69,10 @@ export const questionList: Question[] = [
   },
   {
     id: 8,
-    answer: '12',
-    hint: '시계에서 저 방향은 어디를 가리키는 걸까요?',
-    answerType: 'Number',
-    answerDesc: '시계에서 화살표가 가리키는 방향, 즉 시계 숫자를 의미합니다.',
+    answer: 'EXIT',
+    hint: '화살표 갯수만큼 특정방향으로 알파벳을 이동해보세요.',
+    answerType: 'English',
+    answerDesc: '화살표 갯수만큼 역방향으로 알파벳을 이동하면 영어단어가 완성됩니다.',
   },
   {
     id: 9,
@@ -158,11 +158,10 @@ export const questionList: Question[] = [
   },
   {
     id: 20,
-    answer: 'SAVE',
-    questionDesc: 'N',
-    hint: '문양마다 좌우 반전이 되있는 것 같습니다.',
+    answer: 'TUOH',
+    hint: '글자가 반이 잘려있는 듯 합니다.',
     answerType: 'English',
-    answerDesc: '알파벳이 좌우 반전되어 있습니다. 이를 조합하여 SAVE 단어를 만들 수 있습니다.',
+    answerDesc: '글자를 거울에 비춰서 본다 생각하면 ㄱ은 T입니다.',
   },
   {
     id: 21,
@@ -339,7 +338,7 @@ export const questionList: Question[] = [
     id: 43,
     answer: '10912',
     hint: '2:00 ~ 4:00 시간 범위에 따라 보면 E T N, 이를 이용해 숫자단어를 만들어 보세요.',
-    questionDesc: ' 2:00 ~ 4:00 \n 4:00 ~ 7:00 \n 9:00 ~ 11:00 \n 11::00 ~ 01:00',
+    questionDesc: ' 2:00 ~ 4:00 \n 4:00 ~ 7:00 \n 9:00 ~ 11:00 \n 11:00 ~ 01:00',
     answerType: 'Number',
     answerDesc:
       '2:00 ~ 4:00 시간 범위에 따라 보면 E T N , 이를 조합하면 TEN(10)을 만들수 있습니다. 다른 시간대도 동일한 방법을 사용해서 숫자단어를 조합해내면 됩니다.',
@@ -360,5 +359,44 @@ export const questionList: Question[] = [
     answerType: 'English',
     isAnswerImage: true,
     answerDesc: '',
+  },
+  {
+    id: 46,
+    answer: 'MAP',
+    hint: '4 DIAMOND => M',
+    answerType: 'English',
+    answerDesc: '문양의 영어단어와 카드의 숫자위치의 알파벳을 조합하면 DIAMOND => M, HEART => A, SPACE => P 입니다.',
+  },
+  {
+    id: 47,
+    answer: 'PEN',
+    hint: '각 교수의 색깔을 시간표에서 찾아보세요. 색이 겹치는 부분까지 고려해보세요.',
+    questionDesc: '강의 준비물은 무엇인가?',
+    answerType: 'English',
+    answerDesc:
+      '각 교수마다의 색깔이 있고 이를 시간표에서 찾으면 됩니다. 다만 색이 겹치는 부분은 수업이 겹치는 부분으로 각 색깔이 겹쳤을 때의 색을 잘 생각해서 찾으면 노랑은 P, 파랑은 E, 빨강은 N입니다.',
+  },
+  {
+    id: 48,
+    answer: '하우우상우좌하상',
+    hint: '대문자 알파벳과 방향을 연관지어 생각해보세요.',
+    answerType: 'direction',
+    answerDesc: '대문자 알파벳은 S E N W, South(남), East(동), West(서), North(북)의 방향을 가르킵니다.',
+  },
+  {
+    id: 49,
+    answer: '5710',
+    hint: '이름을 자음,모음을 순서대로 세보세요.',
+    answerType: 'Number',
+    answerDesc:
+      '민인규 이름에서 국어 숫자만큼 자음모음을 구분지어서 세면 ㅇ입니다. 그렇게 3개의 숫자를 조합하면 ㅇ ㅠ ㄱ 으로 육(6)입니다.',
+  },
+  {
+    id: 50,
+    answer: '',
+    hint: 'ㅎㅁㅎ 없습니다.',
+    answerType: 'device',
+    answerDesc: '',
+    isInterative: true,
   },
 ]
