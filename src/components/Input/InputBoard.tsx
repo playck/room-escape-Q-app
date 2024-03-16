@@ -18,6 +18,7 @@ import confetti from 'canvas-confetti'
 import { BsArrowCounterclockwise } from 'react-icons/bs'
 import { useLocalStorage } from 'usehooks-ts'
 import { trackingEvent } from '@/lib/script/ga'
+import AdModal from '../Modal/AdModal'
 
 interface InputBoardProps {
   question: Question
@@ -55,7 +56,7 @@ function InputBoard({ question }: InputBoardProps) {
   useEffect(() => {
     if (isCorrect) {
       confetti({
-        particleCount: 120,
+        particleCount: 240,
         spread: 70,
         origin: { y: 0.8 },
       })
@@ -66,11 +67,6 @@ function InputBoard({ question }: InputBoardProps) {
     if (!inputValue) return
 
     if (inputValue === answer) {
-      confetti({
-        particleCount: 120,
-        spread: 70,
-        origin: { y: 0.8 },
-      })
       setIsCorrect(true)
       if (!solvedList.includes(Number(id))) {
         setSolvedList([...solvedList, Number(id)])
@@ -86,6 +82,17 @@ function InputBoard({ question }: InputBoardProps) {
       })
     }
   }
+
+  //  광고 설정 로직
+
+  // setModal({
+  //   isOpen: true,
+  //   content: <AdModal />,
+  // })
+  // setModalProps({
+  //   size: 'full',
+  //   isCentered: true,
+  // })
 
   const onOpenHint = () => {
     if (!isCorrect) {

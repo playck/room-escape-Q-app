@@ -4,6 +4,7 @@ import { useState } from 'react'
 import _ from 'lodash'
 import { useSetRecoilState } from 'recoil'
 import { InputAnswerState } from '@/atoms/input/inputAnswer'
+import { NextImage } from '../Image'
 
 interface Questions29Props {}
 
@@ -20,7 +21,7 @@ function Questions29(props: Questions29Props) {
   return (
     <Flex pb="30px" direction="column">
       <Box pb="50px">
-        <Image src="/images/questions/q-29.png" alt="" />
+        <NextImage src="/images/questions/q-29.png" alt="" w="530" h="530" />
       </Box>
       <Flex direction="column" gap="45px">
         <SimpleGrid columns={4} spacing="20px" width="100%">
