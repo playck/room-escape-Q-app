@@ -18,7 +18,7 @@ import confetti from 'canvas-confetti'
 import { BsArrowCounterclockwise } from 'react-icons/bs'
 import { useLocalStorage } from 'usehooks-ts'
 import { trackingEvent } from '@/lib/script/ga'
-import AdModal from '../Modal/AdModal'
+// import AdModal from '../Modal/AdModal'
 
 interface InputBoardProps {
   question: Question
