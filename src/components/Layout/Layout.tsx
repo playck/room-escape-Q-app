@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react'
 import { ReactElement } from 'react'
 import { Navbar } from '../NavBar'
+import { PageLoading } from '../Loading'
 
 interface LayoutProps {
   children: ReactElement
@@ -35,6 +36,7 @@ function Layout({ children }: LayoutProps) {
       >
         {children}
       </Box>
+      <PageLoading />
     </Box>
   )
 }

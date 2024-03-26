@@ -25,3 +25,8 @@ export const ModalPropsState = atom<ModalProps>({
     isCentered: true,
   },
 })
+
+export const isPageLoadingState = atom<boolean>({
+  key: 'isPageLoadingState',
+  default: false,
+})
