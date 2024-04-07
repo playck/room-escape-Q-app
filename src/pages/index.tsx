@@ -24,18 +24,16 @@ export default function Home() {
         </Text>
       </Flex>
       <Box
-        height="50vh"
+        height="60vh"
         sx={{
-          img: {
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          },
+          backgroundImage: 'url(/images/main/mainDoor.jpeg)',
+          backgroundRepeat: 'no-repeat',
+          backgroundOrigin: 'content-box',
+          backgroundPosition: 'center 65%',
+          backgroundSize: '110%',
         }}
-      >
-        <Image src="/images/main/doormain.png" alt="" />
-      </Box>
-      <Flex mt={['35px', '100px']} mb="20px" justifyContent="center">
+      />
+      <Flex mt={['25px', '100px']} mb="20px" justifyContent="center">
         <Center
           width={['100px', '150px']}
           height={['100px', '150px']}
