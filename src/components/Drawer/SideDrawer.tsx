@@ -9,6 +9,8 @@ import {
   Text,
   Divider,
   Button,
+  CircularProgress,
+  CircularProgressLabel,
 } from '@chakra-ui/react'
 import { getFontStyle } from '@/chakra/fonts'
 import { IoClose } from 'react-icons/io5'
@@ -27,7 +29,7 @@ function SideDrawer({ isOpen, onClose }: SideDrawerProps): JSX.Element {
   const [level, setLevel] = useState<number>(0)
   const [levelTitle, setLevelTitle] = useState<string>('')
 
-  const levelList = ['방세포', '방유아', '방청년', '방천재']
+  const levelList = ['방세포', '방유아', '방린이', '방청년', '방천재']
 
   useEffect(() => {
     const len = solvedList?.length
@@ -43,6 +45,9 @@ function SideDrawer({ isOpen, onClose }: SideDrawerProps): JSX.Element {
     } else if (30 < len && len <= 40) {
       setLevelTitle(levelList[3])
       setLevel(3)
+    } else if (40 < len && len <= 50) {
+      setLevelTitle(levelList[4])
+      setLevel(4)
     }
   }, [solvedList])
 
@@ -64,18 +69,41 @@ function SideDrawer({ isOpen, onClose }: SideDrawerProps): JSX.Element {
           </DrawerHeader>
           <Divider />
           <DrawerBody p="0">
-            <Flex p="16px" gap="20px" bg="gray.50" {...getFontStyle(16, 500, '20px')}>
-              <Flex gap="8px">
+            <Flex
+              justifyContent="space-between"
+              p="16px"
+              px="32px"
+              gap="20px"
+              bg="gray.10"
+              {...getFontStyle(16, 500, '20px')}
+            >
+              <Flex gap="12px" direction="column" align="center">
                 <Text>푼 문제</Text>
-                <Text>
-                  {solvedList?.length} / {questionList.length}
-                </Text>
+                <CircularProgress
+                  value={(solvedList?.length / questionList.length) * 100}
+                  color="semantic.positive"
+                  size="100px"
+                >
+                  <CircularProgressLabel>
+                    <Text {...getFontStyle(16, 500, '20px')}>
+                      {solvedList?.length} / {questionList.length}
+                    </Text>
+                  </CircularProgressLabel>
+                </CircularProgress>
               </Flex>
-              <Flex gap="8px">
+              <Flex gap="12px" direction="column" align="center">
                 <Text>힌트 사용 문제</Text>
-                <Text>
-                  {usedHintList?.length} / {questionList.length}
-                </Text>
+                <CircularProgress
+                  value={(usedHintList?.length / questionList.length) * 100}
+                  color="semantic.negative"
+                  size="100px"
+                >
+                  <CircularProgressLabel>
+                    <Text {...getFontStyle(16, 500, '20px')}>
+                      {usedHintList?.length} / {questionList.length}
+                    </Text>
+                  </CircularProgressLabel>
+                </CircularProgress>
               </Flex>
             </Flex>
           </DrawerBody>
