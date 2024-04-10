@@ -8,7 +8,7 @@ interface QuestionSectionProps {
 }
 
 function QuestionSection({ question }: QuestionSectionProps) {
-  const { id, isInterative, questionDesc, answer } = question
+  const { id, isInterative, questionDesc } = question
 
   return (
     <Flex
@@ -23,6 +23,7 @@ function QuestionSection({ question }: QuestionSectionProps) {
     >
       {isInterative ? <PlayGround>{switchInteractiveQuestion(id)}</PlayGround> : <ImageBox id={id} />}
       {questionDesc ? <TextBox questionDesc={questionDesc} /> : <></>}
+      {/* <Script id="adsbygoogle-init">{`(adsbygoogle = window.adsbygoogle || []).push({});`}</Script> */}
     </Flex>
   )
 }

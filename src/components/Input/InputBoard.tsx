@@ -18,7 +18,7 @@ import confetti from 'canvas-confetti'
 import { BsArrowCounterclockwise } from 'react-icons/bs'
 import { useLocalStorage } from 'usehooks-ts'
 import { trackingEvent } from '@/lib/script/ga'
-// import AdModal from '../Modal/AdModal'
+import AdModal from '../Modal/AdModal'
 
 interface InputBoardProps {
   question: Question
@@ -83,24 +83,23 @@ function InputBoard({ question }: InputBoardProps) {
     }
   }
 
-  //  광고 설정 로직
-
-  // setModal({
-  //   isOpen: true,
-  //   content: <AdModal />,
-  // })
-  // setModalProps({
-  //   size: 'full',
-  //   isCentered: true,
-  // })
-
   const onOpenHint = () => {
-    if (!isCorrect) {
+    if (!isCorrect && usedHintList.length && usedHintList.length % 3 === 0) {
+      setModal({
+        isOpen: true,
+        content: <AdModal hint={hint} answer={answer} interativeAnswer={interativeAnswer} />,
+      })
+      setModalProps({
+        size: 'full',
+        isCentered: true,
+      })
+    } else if (!isCorrect) {
       setModal({
         isOpen: true,
         content: <HintModal hint={hint} answer={answer} interativeAnswer={interativeAnswer} />,
       })
     }
+
     if (!usedHintList.includes(Number(id))) {
       if (router?.query.dev != 'true') {
         trackingEvent('hint', 'HintOpen')

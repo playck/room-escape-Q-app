@@ -1,6 +1,7 @@
 import { InputBoard } from '@/components/Input'
 import { QuestionSection } from '@/components/Question'
-import { Question, questionList } from '@/lib/constant/questions'
+import { questionList } from '@/lib/constant/questions'
+import type { Question } from '@/lib/constant/questions'
 import { Flex } from '@chakra-ui/react'
 import _ from 'lodash'
 import { getFilterdQuestion } from '../../../service/questions'
