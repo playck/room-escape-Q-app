@@ -45,7 +45,7 @@ function AdModal({ hint, answer, interativeAnswer }: AdModalProps) {
         style={{
           position: 'absolute',
           top: '50%',
-          transform: 'translate(0, -55%)',
+          transform: 'translate(0, -52.5%)',
           left: 0,
           width: '100%',
           height: '100vh',

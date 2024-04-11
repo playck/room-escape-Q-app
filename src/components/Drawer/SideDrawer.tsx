@@ -69,16 +69,9 @@ function SideDrawer({ isOpen, onClose }: SideDrawerProps): JSX.Element {
           </DrawerHeader>
           <Divider />
           <DrawerBody p="0">
-            <Flex
-              justifyContent="space-between"
-              p="16px"
-              px="32px"
-              gap="20px"
-              bg="gray.10"
-              {...getFontStyle(16, 500, '20px')}
-            >
+            <Flex justifyContent="space-between" p="16px" px="32px" gap="20px" {...getFontStyle(16, 500, '20px')}>
               <Flex gap="12px" direction="column" align="center">
-                <Text>푼 문제</Text>
+                <Text>해결한 문제 수</Text>
                 <CircularProgress
                   value={(solvedList?.length / questionList.length) * 100}
                   color="semantic.positive"
@@ -92,7 +85,7 @@ function SideDrawer({ isOpen, onClose }: SideDrawerProps): JSX.Element {
                 </CircularProgress>
               </Flex>
               <Flex gap="12px" direction="column" align="center">
-                <Text>힌트 사용 문제</Text>
+                <Text>힌트 사용 문제 수</Text>
                 <CircularProgress
                   value={(usedHintList?.length / questionList.length) * 100}
                   color="semantic.negative"
