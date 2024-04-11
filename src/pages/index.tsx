@@ -33,7 +33,7 @@ export default function Home() {
           backgroundSize: '110%',
         }}
       />
-      <Flex mt={['25px', '100px']} mb="20px" justifyContent="center">
+      <Flex mt={['25px', '50px']} mb={['20px', '40px']} justifyContent="center">
         <Center
           width={['100px', '150px']}
           height={['100px', '150px']}
@@ -51,6 +51,9 @@ export default function Home() {
           <button className="start-btn">시작</button>
         </Center>
       </Flex>
+      <Center mb="25px" color="#FFF" {...getFontStyle(14, 500, 'normal')}>
+        ⓒ 2024. Room Escape Bootcamp All rights reserved.
+      </Center>
     </Flex>
   )
 }
