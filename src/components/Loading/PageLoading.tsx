@@ -30,7 +30,7 @@ function PageLoading() {
 
   return (
     <Modal isOpen={isPageLoading} onClose={() => {}} closeOnOverlayClick={false} isCentered>
-      <ModalOverlay />
+      {/* <ModalOverlay /> */}
       <ModalContent bg="transparent" boxShadow="none">
         <Center>
           <CircularProgress isIndeterminate color={colors.gray[800]} size="60px" />
