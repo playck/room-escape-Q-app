@@ -36,28 +36,31 @@ function AdModal({ hint, answer, interativeAnswer }: AdModalProps) {
   }
 
   return (
-    <Box
-      id="ad-wrapper"
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100vh',
-        zIndex: '999',
-      }}
-    >
+    <Box>
       <Flex justifyContent="flex-end" p="8px" zIndex="1000" bg="gray.50">
         <CloseButton onClick={() => onCloseAdModal()} />
       </Flex>
-      <ins
-        className="adsbygoogle"
-        style={{ display: 'block', height: 'calc(100% - 50px)' }}
-        data-ad-client="ca-pub-6018563398084009"
-        data-ad-slot="8438190738"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      ></ins>
+      <Box
+        id="ad-wrapper"
+        style={{
+          position: 'absolute',
+          top: '50%',
+          transform: 'translate(0, -55%)',
+          left: 0,
+          width: '100%',
+          height: '100vh',
+          zIndex: '999',
+        }}
+      >
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block', height: 'calc(100% - 50px)' }}
+          data-ad-client="ca-pub-6018563398084009"
+          data-ad-slot="8438190738"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </Box>
     </Box>
   )
 }
