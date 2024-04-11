@@ -3,6 +3,13 @@ import { Box, CloseButton, Flex } from '@chakra-ui/react'
 import { useResetRecoilState, useSetRecoilState } from 'recoil'
 import HintModal from './HintModal'
 import { Question } from '@/lib/constant/questions'
+import { useEffect } from 'react'
+
+declare global {
+  interface Window {
+    adsbygoogle: any
+  }
+}
 
 interface AdModalProps {
   hint: Question['hint']
@@ -13,6 +20,12 @@ interface AdModalProps {
 function AdModal({ hint, answer, interativeAnswer }: AdModalProps) {
   const setModal = useSetRecoilState(ModalState)
   const resetModalProps = useResetRecoilState(ModalPropsState)
+
+  useEffect(() => {
+    if (window) {
+      ;(window.adsbygoogle = window.adsbygoogle || [])?.push({})
+    }
+  }, [])
 
   const onCloseAdModal = () => {
     setModal({

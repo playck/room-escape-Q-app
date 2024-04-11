@@ -10,7 +10,6 @@ export default function Document() {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6018563398084009"
           crossOrigin="anonymous"
         ></script>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </Head>
       <body>
         <Main />
