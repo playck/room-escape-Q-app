@@ -84,13 +84,13 @@ function InputBoard({ question }: InputBoardProps) {
   }
 
   const onOpenHint = () => {
-    if (!isCorrect && usedHintList.length && usedHintList.length % 2 === 0) {
+    if (!isCorrect && usedHintList.length && !usedHintList.includes(Number(id)) && usedHintList.length % 2 === 0) {
       setModal({
         isOpen: true,
         content: <AdModal hint={hint} answer={answer} interativeAnswer={interativeAnswer} />,
       })
       setModalProps({
-        size: 'full',
+        size: 'xl',
         isCentered: true,
       })
     } else if (!isCorrect) {

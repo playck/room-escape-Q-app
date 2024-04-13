@@ -28,7 +28,7 @@ function ModalFrame(props: ModalFrameProps) {
   return (
     <Modal motionPreset="none" onClose={() => onCloseModal()} {...ModalProps} isOpen={isOpen}>
       <ModalOverlay />
-      <ModalContent maxW="500px" minH={['620px', '1000px', '1000px']} mx="20px">
+      <ModalContent maxW="500px" mx="20px">
         {content}
       </ModalContent>
     </Modal>

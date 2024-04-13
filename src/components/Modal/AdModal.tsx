@@ -36,21 +36,18 @@ function AdModal({ hint, answer, interativeAnswer }: AdModalProps) {
   }
 
   return (
-    <Box>
+    <Box minHeight={['700px !important', '1000px !important', '1000px !important']}>
       <Flex justifyContent="flex-end" p="8px" zIndex="1000" bg="gray.50">
         <CloseButton onClick={() => onCloseAdModal()} />
       </Flex>
       <Box
         id="ad-wrapper"
-        style={{
-          position: 'absolute',
-          top: '50%',
-          transform: 'translate(0, -52.5%)',
-          left: 0,
-          width: '100%',
-          height: '100vh',
-          zIndex: '999',
-        }}
+        position="absolute"
+        top="50%"
+        transform="translate(0, -52.5%)"
+        left={0}
+        width="100%"
+        zIndex="999"
       >
         <ins
           className="adsbygoogle"
