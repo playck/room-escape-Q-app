@@ -51,7 +51,7 @@ function AdModal({ hint, answer, interativeAnswer }: AdModalProps) {
       >
         <ins
           className="adsbygoogle"
-          style={{ display: 'block', height: 'calc(100% - 50px)' }}
+          style={{ display: 'block', width: '100%', height: 'calc(100% - 50px)' }}
           data-ad-client="ca-pub-6018563398084009"
           data-ad-slot="8438190738"
           data-ad-format="auto"

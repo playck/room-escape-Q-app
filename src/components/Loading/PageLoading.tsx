@@ -1,5 +1,5 @@
 import { isPageLoadingState } from '@/atoms/etc/modal'
-import { Center, CircularProgress, Modal, ModalContent, ModalOverlay } from '@chakra-ui/react'
+import { Center, Modal, ModalContent, ModalOverlay, Spinner } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
@@ -33,7 +33,7 @@ function PageLoading() {
       {/* <ModalOverlay /> */}
       <ModalContent bg="transparent" boxShadow="none">
         <Center>
-          <CircularProgress isIndeterminate color={colors.gray[800]} size="60px" />
+          <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color={colors.gray[800]} size="xl" />
         </Center>
       </ModalContent>
     </Modal>

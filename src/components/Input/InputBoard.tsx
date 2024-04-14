@@ -90,7 +90,7 @@ function InputBoard({ question }: InputBoardProps) {
         content: <AdModal hint={hint} answer={answer} interativeAnswer={interativeAnswer} />,
       })
       setModalProps({
-        size: 'xl',
+        size: 'full',
         isCentered: true,
       })
     } else if (!isCorrect) {
