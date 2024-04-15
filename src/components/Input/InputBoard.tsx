@@ -1,24 +1,26 @@
 import { Button, Center, Flex, HStack, Image, PinInput, PinInputField, Text, useToast } from '@chakra-ui/react'
 import { useState, useRef, useEffect } from 'react'
 import _ from 'lodash'
-import { IoIosArrowForward } from 'react-icons/io'
 import { Question } from '@/lib/constant/questions'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { ModalPropsState, ModalState } from '@/atoms/etc/modal'
 import { useRouter } from 'next/router'
-import { DefaultButton, DirectionLockButton } from '../Button'
+import { DirectionLockButton } from '../Button'
 import { colors } from '@/chakra/colors'
 import { InputAnswerState, directedValueArrState, isAnswerCorrectState } from '@/atoms/input/inputAnswer'
-import { alertInputReset } from '@/lib/constant/toast'
+import { alertCopied, alertInputReset } from '@/lib/constant/toast'
 import AnswerModal from '../Modal/AnswerModal'
 import HintModal from '../Modal/HintModal'
 import { getFontStyle } from '@/chakra/fonts'
 import AlertModal from '../Modal/AlertModal'
 import confetti from 'canvas-confetti'
 import { BsArrowCounterclockwise } from 'react-icons/bs'
-import { useLocalStorage } from 'usehooks-ts'
+import { useLocalStorage, useCopyToClipboard } from 'usehooks-ts'
 import { trackingEvent } from '@/lib/script/ga'
 import AdModal from '../Modal/AdModal'
+import { ImList } from 'react-icons/im'
+import { FaQuestion, FaShareAlt } from 'react-icons/fa'
+import { HiArrowRight } from 'react-icons/hi'
 
 interface InputBoardProps {
   question: Question
@@ -34,6 +36,7 @@ function InputBoard({ question }: InputBoardProps) {
   const [isCorrect, setIsCorrect] = useRecoilState(isAnswerCorrectState)
   const [solvedList, setSolvedList] = useLocalStorage<number[]>('solvedList', [])
   const [usedHintList, setUsedHintList] = useLocalStorage<number[]>('useHintList', [])
+  const [copiedText, copy] = useCopyToClipboard()
   const setModal = useSetRecoilState(ModalState)
   const setModalProps = useSetRecoilState(ModalPropsState)
   const setDirectedValueArr = useSetRecoilState(directedValueArrState)
@@ -58,7 +61,7 @@ function InputBoard({ question }: InputBoardProps) {
       confetti({
         particleCount: 240,
         spread: 70,
-        origin: { y: 0.8 },
+        origin: { y: 0.9 },
       })
     }
   }, [isCorrect])
@@ -71,6 +74,9 @@ function InputBoard({ question }: InputBoardProps) {
       if (!solvedList.includes(Number(id))) {
         setSolvedList([...solvedList, Number(id)])
       }
+      setTimeout(() => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+      }, 600)
     } else {
       setModal({
         isOpen: true,
@@ -118,6 +124,17 @@ function InputBoard({ question }: InputBoardProps) {
       toast.closeAll()
       toast(alertInputReset)
     }
+  }
+
+  const onHandleURLCopy = (text: string) => {
+    copy(text)
+      .then(() => {
+        toast.closeAll()
+        toast(alertCopied)
+      })
+      .catch((err) => {
+        // do nothing
+      })
   }
 
   return (
@@ -197,7 +214,7 @@ function InputBoard({ question }: InputBoardProps) {
       {answerType == 'direction' ? (
         <DirectionLockButton answer={answer} isCorrect={isCorrect} setIsCorrect={setIsCorrect} />
       ) : (
-        <Flex alignItems="center" mt="25px" mb="40px">
+        <Flex alignItems="center" mt="25px" mb="30px">
           <Button
             p="22px"
             bg="gray.800"
@@ -229,7 +246,7 @@ function InputBoard({ question }: InputBoardProps) {
       )}
       {isCorrect ? (
         <Flex
-          gap="10px"
+          gap="25px"
           sx={{
             button: {
               '&:hover': {
@@ -241,8 +258,20 @@ function InputBoard({ question }: InputBoardProps) {
             },
           }}
         >
-          <DefaultButton
-            style={{ backgroundColor: colors.button.orange }}
+          <Center
+            width="60px"
+            height="60px"
+            borderRadius="50%"
+            bg={colors.gray[5]}
+            onClick={() => router.replace('/questions')}
+          >
+            <ImList size={24} />
+          </Center>
+          <Center
+            width="60px"
+            height="60px"
+            borderRadius="50%"
+            bg={colors.gray[10]}
             onClick={() =>
               setModal({
                 isOpen: true,
@@ -250,25 +279,29 @@ function InputBoard({ question }: InputBoardProps) {
               })
             }
           >
-            <Flex flex="1" justifyContent="center" alignItems="center" gap="5px">
-              <Text as="span">정답 풀이</Text>
-              <Center display="inline-flex" width="30px" height="30px" borderRadius="50%" bg="gray.1000">
-                ❓
-              </Center>
-            </Flex>
-          </DefaultButton>
+            <FaQuestion size={24} color="red" />
+          </Center>
+          <Center
+            width="60px"
+            height="60px"
+            borderRadius="50%"
+            bg={colors.gray[5]}
+            onClick={() => onHandleURLCopy(`https://www.room-escape-bootcamp.com${router.asPath}`)}
+          >
+            <FaShareAlt size={24} color="blue" />
+          </Center>
           {id == '50' ? (
             <></>
           ) : (
-            <DefaultButton
-              style={{ backgroundColor: colors.button.purple, justifyContent: 'flex-end', paddingRight: '5px' }}
+            <Center
+              width="60px"
+              height="60px"
+              borderRadius="50%"
+              bg={colors.gray[10]}
               onClick={() => router.replace(`/questions/${Number(id) + 1}`)}
             >
-              <Flex alignItems="center" gap="5px">
-                <Text>다음 문제 풀기</Text>
-                <IoIosArrowForward size={28} />
-              </Flex>
-            </DefaultButton>
+              <HiArrowRight size={30} />
+            </Center>
           )}
         </Flex>
       ) : (

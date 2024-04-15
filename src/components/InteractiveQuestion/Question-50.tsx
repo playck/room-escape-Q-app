@@ -18,7 +18,7 @@ function Question50() {
   const setModal = useSetRecoilState(ModalState)
   const onResetIdx = useResetRecoilState(activeBoardIdxState)
   const [solvedList, setSolvedList] = useLocalStorage<number[]>('solvedList', [])
-  const [count, setCount] = useState<number>(5)
+  const [count, setCount] = useState<number>(10)
   const [isStart, setIsStart] = useState<boolean>(false)
   const [answer, setAnwer] = useState<number>(0)
   const [selectedArr, setSelectedArr] = useState<string[]>([])
