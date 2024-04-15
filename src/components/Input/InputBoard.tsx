@@ -1,4 +1,4 @@
-import { Button, Center, Flex, HStack, Image, PinInput, PinInputField, Text, useToast } from '@chakra-ui/react'
+import { Box, Button, Center, Flex, HStack, Image, PinInput, PinInputField, Text, useToast } from '@chakra-ui/react'
 import { useState, useRef, useEffect } from 'react'
 import _ from 'lodash'
 import { Question } from '@/lib/constant/questions'
@@ -54,7 +54,7 @@ function InputBoard({ question }: InputBoardProps) {
       setIsCorrect(false)
       confetti.reset()
     }
-  }, [router, answerType])
+  }, [id, answerType])
 
   useEffect(() => {
     if (isCorrect) {
@@ -63,6 +63,13 @@ function InputBoard({ question }: InputBoardProps) {
         spread: 70,
         origin: { y: 0.9 },
       })
+      if (!window.adsbygoogle) {
+        try {
+          ;(window.adsbygoogle = window.adsbygoogle || [])?.push({})
+        } catch {
+          // skip ad
+        }
+      }
     }
   }, [isCorrect])
 
@@ -306,6 +313,25 @@ function InputBoard({ question }: InputBoardProps) {
         </Flex>
       ) : (
         <></>
+      )}
+      {isCorrect && (
+        <Box
+          id="bottom-ad-wrapper"
+          maxW="400px"
+          width="100%"
+          height="90px !important"
+          mt="35px"
+          borderRadius="8px"
+          overflow="hidden"
+          zIndex="999"
+        >
+          <ins
+            className="adsbygoogle"
+            style={{ display: 'inline-block', width: '100%', height: '90px', borderRadius: '8px' }}
+            data-ad-client="ca-pub-6018563398084009"
+            data-ad-slot="9958820220"
+          ></ins>
+        </Box>
       )}
     </Flex>
   )

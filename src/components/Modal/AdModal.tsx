@@ -23,7 +23,11 @@ function AdModal({ hint, answer, interativeAnswer }: AdModalProps) {
 
   useEffect(() => {
     if (window) {
-      ;(window.adsbygoogle = window.adsbygoogle || [])?.push({})
+      try {
+        ;(window.adsbygoogle = window.adsbygoogle || [])?.push({})
+      } catch {
+        // skip ad
+      }
     }
   }, [])
 
