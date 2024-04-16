@@ -314,7 +314,7 @@ function InputBoard({ question }: InputBoardProps) {
       ) : (
         <></>
       )}
-      {isCorrect && (
+      {/* {isCorrect && (
         <Box
           id="bottom-ad-wrapper"
           maxW="400px"
@@ -332,7 +332,7 @@ function InputBoard({ question }: InputBoardProps) {
             data-ad-slot="9958820220"
           ></ins>
         </Box>
-      )}
+      )} */}
     </Flex>
   )
 }
