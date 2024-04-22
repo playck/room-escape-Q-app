@@ -314,7 +314,7 @@ function InputBoard({ question }: InputBoardProps) {
       ) : (
         <></>
       )}
-      {/* {isCorrect && (
+      {isCorrect && (
         <Box
           id="bottom-ad-wrapper"
           maxW="400px"
@@ -327,12 +327,12 @@ function InputBoard({ question }: InputBoardProps) {
         >
           <ins
             className="adsbygoogle"
-            style={{ display: 'inline-block', width: '100%', height: '90px', borderRadius: '8px' }}
+            style={{ display: 'inline-block', minWidth: '300px', width: '100%', height: '90px', borderRadius: '8px' }}
             data-ad-client="ca-pub-6018563398084009"
             data-ad-slot="9958820220"
           ></ins>
         </Box>
-      )} */}
+      )}
     </Flex>
   )
 }
