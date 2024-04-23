@@ -76,6 +76,9 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
       if (!solvedList.includes(Number(id))) {
         setSolvedList([...solvedList, Number(id)])
       }
+      setTimeout(() => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+      }, 600)
     } else {
       toast.closeAll()
       toast(alertisNotAnswer)

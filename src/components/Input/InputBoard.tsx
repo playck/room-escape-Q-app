@@ -21,6 +21,7 @@ import AdModal from '../Modal/AdModal'
 import { ImList } from 'react-icons/im'
 import { FaQuestion, FaShareAlt } from 'react-icons/fa'
 import { HiArrowRight } from 'react-icons/hi'
+import { BottomAd } from '../Ad'
 
 interface InputBoardProps {
   question: Question
@@ -63,19 +64,11 @@ function InputBoard({ question }: InputBoardProps) {
         spread: 70,
         origin: { y: 0.9 },
       })
-      if (!window.adsbygoogle) {
-        try {
-          ;(window.adsbygoogle = window.adsbygoogle || [])?.push({})
-        } catch {
-          // skip ad
-        }
-      }
     }
   }, [isCorrect])
 
   const onSubmitAnswer = () => {
     if (!inputValue) return
-
     if (inputValue === answer) {
       setIsCorrect(true)
       if (!solvedList.includes(Number(id))) {
@@ -133,7 +126,7 @@ function InputBoard({ question }: InputBoardProps) {
     }
   }
 
-  const onHandleURLCopy = (text: string) => {
+  const onCopyURL = (text: string) => {
     copy(text)
       .then(() => {
         toast.closeAll()
@@ -145,7 +138,7 @@ function InputBoard({ question }: InputBoardProps) {
   }
 
   return (
-    <Flex as="section" px="50px" pb="50px" justifyContent="center" alignItems="center" direction="column">
+    <Flex as="section" px="50px" pb="25px" justifyContent="center" alignItems="center" direction="column">
       <Flex width="100%" justifyContent="center" mb="16px" gap="12px">
         <Button
           aria-label="Hint-button"
@@ -293,7 +286,7 @@ function InputBoard({ question }: InputBoardProps) {
             height="60px"
             borderRadius="50%"
             bg={colors.gray[5]}
-            onClick={() => onHandleURLCopy(`https://www.room-escape-bootcamp.com${router.asPath}`)}
+            onClick={() => onCopyURL(`https://www.room-escape-bootcamp.com${router.asPath}`)}
           >
             <FaShareAlt size={24} color="blue" />
           </Center>
@@ -314,25 +307,7 @@ function InputBoard({ question }: InputBoardProps) {
       ) : (
         <></>
       )}
-      {isCorrect && (
-        <Box
-          id="bottom-ad-wrapper"
-          maxW="400px"
-          width="100%"
-          height="90px !important"
-          mt="35px"
-          borderRadius="8px"
-          overflow="hidden"
-          zIndex="999"
-        >
-          <ins
-            className="adsbygoogle"
-            style={{ display: 'inline-block', minWidth: '300px', width: '100%', height: '90px', borderRadius: '8px' }}
-            data-ad-client="ca-pub-6018563398084009"
-            data-ad-slot="9958820220"
-          ></ins>
-        </Box>
-      )}
+      {isCorrect && <BottomAd />}
     </Flex>
   )
 }
