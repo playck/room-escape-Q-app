@@ -18,7 +18,7 @@ function BottomAd() {
         id="bottom-ad-wrapper"
         maxW={['400px', '600px', '800px']}
         width="100%"
-        height="90px !important"
+        height="100px !important"
         mt="35px"
         borderRadius="8px"
         overflow="hidden"
