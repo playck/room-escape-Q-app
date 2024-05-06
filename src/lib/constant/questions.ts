@@ -274,7 +274,7 @@ export const questionList: Question[] = [
   {
     id: 35,
     answer: 'STEAK',
-    hint: '네 번째 칸에 4는 영어 단어의 네 번째 위치의 네 번째 알파벳입니다. 이렇게 조합하면 LUNCH입니다.',
+    hint: '세 번째 칸에 4는 영어 단어의 네 번째 위치의 알파벳이고 C입니다. 이렇게 조합하면 LUNCH입니다.',
     answerType: 'English',
     answerDesc:
       '칸마다 영어 알파벳이 순서대로 들어가고 칸에 쓰여진 숫자는 정답의 알파벳 위치를 뜻합니다. 첫번째 칸의 4는 OOOAO 를 의미합니다.',
