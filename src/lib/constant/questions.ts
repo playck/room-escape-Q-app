@@ -165,7 +165,7 @@ export const questionList: Question[] = [
   },
   {
     id: 21,
-    answer: 'TKTH',
+    answer: 'THTH',
     hint: '단어가 아니라 문장일 수도 있습니다.',
     answerType: 'English',
     answerDesc: 'D is H  F is H ... 단어가 아닌 문장입니다.',
