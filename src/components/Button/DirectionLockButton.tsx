@@ -22,6 +22,7 @@ interface DirectionLockButtonProps {
 function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockButtonProps) {
   const initialX = 0 // 초기 X 좌표
   const initialY = 0 // 초기 Y 좌표
+  const DIRECTION_LOCK_BUTTON_SENSITIVITY = 18
   const [lastDragX, setLastDragX] = useState(initialX) // 마지막으로 드래그한 X 좌표 상태 변수
   const [lastDragY, setLastDragY] = useState(initialY) // 마지막으로 드래그한 Y 좌표 상태 변수
   const x = useMotionValue(initialX) // X 좌표를 관리하는 변수
@@ -51,19 +52,19 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
   }, [lastDragX, lastDragY])
 
   const onHandleDirectionValue = () => {
-    if (lastDragX <= -22) {
+    if (lastDragX <= -DIRECTION_LOCK_BUTTON_SENSITIVITY) {
       const counted = directedValueArr + '좌'
       setDirectedValueArr(counted)
       return
-    } else if (lastDragX >= 22) {
+    } else if (lastDragX >= DIRECTION_LOCK_BUTTON_SENSITIVITY) {
       const counted = directedValueArr + '우'
       setDirectedValueArr(counted)
       return
-    } else if (lastDragY <= -22) {
+    } else if (lastDragY <= -DIRECTION_LOCK_BUTTON_SENSITIVITY) {
       const counted = directedValueArr + '상'
       setDirectedValueArr(counted)
       return
-    } else if (lastDragY >= 22) {
+    } else if (lastDragY >= DIRECTION_LOCK_BUTTON_SENSITIVITY) {
       const counted = directedValueArr + '하'
       setDirectedValueArr(counted)
       return
@@ -107,6 +108,11 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
         borderBottom="none"
         borderRadius="50% 50% 0 0 / 50% 50% 0 0"
         backgroundColor="transparent"
+        boxShadow="
+          inset 0px 3px 5px rgba(255,255,255,0.2),
+          inset 0px -2px 3px rgba(0,0,0,0.1),
+          0px 1px 2px rgba(0,0,0,0.08)
+        "
         zIndex="1"
       />
       <Box
@@ -164,9 +170,10 @@ function DirectionLockButton({ isCorrect, answer, setIsCorrect }: DirectionLockB
           </Box>
           <motion.div
             drag // 드래그 가능하도록 설정
-            dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }} // 드래그 범위 제한
             style={{ x, y }}
             onDragEnd={handleDragEnd}
+            dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }} // 드래그 범위 제한
+            dragDirectionLock
             exit={{ x: lastDragX, y: lastDragY, opacity: 0, transition: { duration: 1 } }} // 원래 위치로 돌아갈 때 애니메이션 설정
           >
             {/* 드래그할 요소 */}

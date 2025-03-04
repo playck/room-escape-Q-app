@@ -21,10 +21,8 @@ function DirectionLockBtnInfo(props: DirectionLockBtnInfoProps) {
             <NextImage src="/images/items/directionLockBtn-1.png" alt="" w="300" h="100" />
           </Box>
           <Center flex="1" flexDirection="column" gap="8px">
-            <Text>
-              1. 가운데 하얀 버튼을 원하는 방향으로 이미지와 같이 가능한 정확히 화살표 그림 위치까지 드래그 해주세요.
-            </Text>
-            <Text>2. 원하는 답을 차례대로 입력한 후 자물쇠 위의 화살표를 눌러주세요. </Text>
+            <Text>1. 가운데 하얀 버튼을 원하는 방향으로 이미지처럼 화살표 그림 위치까지 끌어 당겨주세요.</Text>
+            <Text>2. 원하는 방향을 차례대로 입력한 후 자물쇠 위의 화살표를 눌러주세요. </Text>
           </Center>
         </Flex>
         <Center>
