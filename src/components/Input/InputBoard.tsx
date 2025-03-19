@@ -91,6 +91,8 @@ function InputBoard({ question }: InputBoardProps) {
 
   const onOpenHint = () => {
     if (!isCorrect && usedHintList.length && !usedHintList.includes(Number(id)) && usedHintList.length % 2 === 0) {
+      // 힌트 광고 일시 중단
+      return
       setModal({
         isOpen: true,
         content: <AdModal hint={hint} answer={answer} interativeAnswer={interativeAnswer} />,
@@ -123,6 +125,31 @@ function InputBoard({ question }: InputBoardProps) {
       setDirectedValueArr('')
       toast.closeAll()
       toast(alertInputReset)
+    }
+  }
+
+  const onSharePage = () => {
+    const url = `https://www.room-escape-bootcamp.com${router.asPath}`
+    const title = '방탈출 부트캠프'
+    const text = `방탈출 ${id} 도전해보세요!`
+
+    if (navigator.share && typeof navigator.share === 'function') {
+      navigator
+        .share({
+          title,
+          text,
+          url,
+        })
+        .then(() => {
+          if (router?.query.dev != 'true') {
+            trackingEvent('share', 'NativeShare')
+          }
+        })
+        .catch((error) => {
+          onCopyURL(url)
+        })
+    } else {
+      onCopyURL(url)
     }
   }
 
@@ -281,13 +308,7 @@ function InputBoard({ question }: InputBoardProps) {
           >
             <FaQuestion size={24} color="red" />
           </Center>
-          <Center
-            width="60px"
-            height="60px"
-            borderRadius="50%"
-            bg={colors.gray[5]}
-            onClick={() => onCopyURL(`https://www.room-escape-bootcamp.com${router.asPath}`)}
-          >
+          <Center width="60px" height="60px" borderRadius="50%" bg={colors.gray[5]} onClick={() => onSharePage()}>
             <FaShareAlt size={24} color="blue" />
           </Center>
           {id == '50' ? (
