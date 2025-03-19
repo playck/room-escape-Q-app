@@ -9,7 +9,7 @@ export default function Home() {
       <Flex
         direction="column"
         alignItems="center"
-        gap="30px"
+        gap={['24px', '32px']}
         mb={['30px', '50px']}
         height="100px"
         color="white"
@@ -24,16 +24,16 @@ export default function Home() {
         </Text>
       </Flex>
       <Box
-        height="60vh"
+        height={['45dvh', '60vh']}
         sx={{
           backgroundImage: 'url(/images/main/mainDoor.jpeg)',
           backgroundRepeat: 'no-repeat',
           backgroundOrigin: 'content-box',
           backgroundPosition: 'center 65%',
-          backgroundSize: '110%',
+          backgroundSize: '100%',
         }}
       />
-      <Flex mt={['25px', '50px']} mb={['20px', '40px']} justifyContent="center">
+      <Flex mt={['20px', '50px']} mb={['20px', '40px']} justifyContent="center">
         <Center
           width={['100px', '150px']}
           height={['100px', '150px']}
