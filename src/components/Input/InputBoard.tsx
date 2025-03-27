@@ -91,8 +91,6 @@ function InputBoard({ question }: InputBoardProps) {
 
   const onOpenHint = () => {
     if (!isCorrect && usedHintList.length && !usedHintList.includes(Number(id)) && usedHintList.length % 2 === 0) {
-      // 힌트 광고 일시 중단
-      return
       setModal({
         isOpen: true,
         content: <AdModal hint={hint} answer={answer} interativeAnswer={interativeAnswer} />,
@@ -131,7 +129,7 @@ function InputBoard({ question }: InputBoardProps) {
   const onSharePage = () => {
     const url = `https://www.room-escape-bootcamp.com${router.asPath}`
     const title = '방탈출 부트캠프'
-    const text = `방탈출 ${id} 도전해보세요!`
+    const text = `방탈출 ${id}번째 문제에 도전해보세요!`
 
     if (navigator.share && typeof navigator.share === 'function') {
       navigator
@@ -142,7 +140,7 @@ function InputBoard({ question }: InputBoardProps) {
         })
         .then(() => {
           if (router?.query.dev != 'true') {
-            trackingEvent('share', 'NativeShare')
+            trackingEvent('share', 'Share')
           }
         })
         .catch((error) => {
@@ -274,6 +272,7 @@ function InputBoard({ question }: InputBoardProps) {
       {isCorrect ? (
         <Flex
           gap="25px"
+          pb="50px"
           sx={{
             button: {
               '&:hover': {
@@ -328,7 +327,6 @@ function InputBoard({ question }: InputBoardProps) {
       ) : (
         <></>
       )}
-      {isCorrect && <BottomAd />}
     </Flex>
   )
 }
