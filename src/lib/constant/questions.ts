@@ -399,4 +399,12 @@ export const questionList: Question[] = [
     answerDesc: '',
     isInterative: true,
   },
+  {
+    id: 51,
+    answer: '',
+    hint: '',
+    answerType: 'direction',
+    answerDesc: '',
+    isInterative: true,
+  },
 ]

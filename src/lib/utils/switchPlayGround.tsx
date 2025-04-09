@@ -8,7 +8,12 @@ import {
   Question42,
   Question44,
   Question50,
+  QuestionTemp,
 } from '@/components/InteractiveQuestion'
+import QuestionTemp2 from '@/components/InteractiveQuestion/Question-temp2'
+import QuestionTemp3 from '@/components/InteractiveQuestion/Question-temp3'
+import QuestionTemp4 from '@/components/InteractiveQuestion/Question-temp4'
+import QuestionTemp5 from '@/components/InteractiveQuestion/Question-temp5'
 
 export const switchInteractiveQuestion = (id: number) => {
   switch (id) {
@@ -31,6 +36,6 @@ export const switchInteractiveQuestion = (id: number) => {
     case 50:
       return <Question50 />
     default:
-      return null
+      return <QuestionTemp5 />
   }
 }

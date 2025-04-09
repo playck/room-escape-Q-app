@@ -6,11 +6,14 @@ import { HiArrowPath } from 'react-icons/hi2'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 interface ClockProps {
   index?: string
+  settingBigClock?: number
+  settingSmallClock?: number
+  isCanModify?: boolean
 }
 
-function Clock({ index = '1' }: ClockProps) {
-  const [bigclockDeg, setBigClockDeg] = useState(0)
-  const [smallClockDeg, setSmallClockDeg] = useState(-6)
+function Clock({ index = '1', settingBigClock = 0, settingSmallClock = -6, isCanModify = true }: ClockProps) {
+  const [bigclockDeg, setBigClockDeg] = useState(settingBigClock)
+  const [smallClockDeg, setSmallClockDeg] = useState(settingSmallClock)
   const [clockData, setClockData] = useRecoilState(clockInputArrayAtomState(index))
   const hour = clockData.hour
   const min = clockData.min
@@ -129,35 +132,37 @@ function Clock({ index = '1' }: ClockProps) {
           </Box>
           <Image src="/images/items/clock.png" alt="clock" />
         </Flex>
-        <Flex
-          mt="10px"
-          gap="10px"
-          sx={{
-            button: {
-              p: 0,
-              '&:hover': {
-                backgroundColor: 'transparent',
+        {isCanModify && (
+          <Flex
+            mt="10px"
+            gap="10px"
+            sx={{
+              button: {
+                p: 0,
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                },
               },
-            },
-          }}
-        >
-          <Flex alignItems="center">
-            <Text>시</Text>
-            <Box>
-              <Button onClick={() => onHandleBigClock()}>
-                <HiArrowPath size={22} />
-              </Button>
-            </Box>
+            }}
+          >
+            <Flex alignItems="center">
+              <Text>시</Text>
+              <Box>
+                <Button onClick={() => onHandleBigClock()}>
+                  <HiArrowPath size={22} />
+                </Button>
+              </Box>
+            </Flex>
+            <Flex alignItems="center">
+              <Text>분</Text>
+              <Box>
+                <Button onClick={() => onHandleSmallClock()}>
+                  <HiArrowPath size={22} />
+                </Button>
+              </Box>
+            </Flex>
           </Flex>
-          <Flex alignItems="center">
-            <Text>분</Text>
-            <Box>
-              <Button onClick={() => onHandleSmallClock()}>
-                <HiArrowPath size={22} />
-              </Button>
-            </Box>
-          </Flex>
-        </Flex>
+        )}
       </Center>
     </>
   )
